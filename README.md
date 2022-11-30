@@ -61,7 +61,7 @@ _Generate routes to storage and profile photos._
 
 _Migrate database_
 ```ssh
-  $ php artisan migrate
+  $ php artisan migrate --seed
 ```
 
 _Run the Project_
