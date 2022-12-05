@@ -28,10 +28,15 @@ class ReportController extends Controller
         $to_date = $request->to_date;
         if ($request->resource == 'sales'){
             $sales = Sales::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
+            $pembelian = Purchase::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
+            foreach ($pembelian as $key => $value) {
+                $harga_beli = $value->price;
+            }
             $total_sales = $sales->count();
             $total_cash =$sales->sum('total_price');
+            $laba_rugi = $total_cash - $harga_beli;
             $title = "Sales Reports";
-            return view('reports',compact('sales','title','total_sales','total_cash'));
+            return view('reports',compact('sales','title','total_sales','total_cash', 'laba_rugi'));
         }
         if($request->resource == "products"){
             $title = "Products Reports";

@@ -10,11 +10,11 @@
 	<h3 class="page-title">Reports</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Generate Reports</li>
+		<li class="breadcrumb-item active">Buat Laporan</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="#generate_report" data-toggle="modal" class="btn btn-primary float-right mt-2">Generate Report</a>
+	<a href="#generate_report" data-toggle="modal" class="btn btn-primary float-right mt-2">Buat Laporan</a>
 </div>
 @endpush
 
@@ -74,11 +74,11 @@
 					<div class="table-responsive">
 						<table id="datatable-export" class="table table-hover table-center mb-0">
 							<thead>
-								<tr>
 									<th>Nama Obat</th>
 									<th>Jumlah</th>
 									<th>Total Harga</th>
-									<th>Date</th>
+									<th>Laba Rugi</th>
+									<th>Tanggal</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -88,8 +88,8 @@
 											<td>{{$sale->product->purchase->name}}</td>
 											<td>{{$sale->quantity}}</td>
 											<td>{{AppSettings::get('app_currency', '$')}} {{($sale->total_price)}}</td>
-											<td>{{date_format(date_create($sale->created_at),"d M, Y")}}</td>
-											
+											<td>{{AppSettings::get('app_currency', '$')}} {{$laba_rugi}}</td>
+											<td>{{$sale->created_at}}</td>
 										</tr>
 									@endif
 								@endforeach

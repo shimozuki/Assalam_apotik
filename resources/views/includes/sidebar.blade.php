@@ -13,17 +13,17 @@
 				
 				@can('view-category')
 				<li class="{{ Request::routeIs('categories') ? 'active' : '' }}"> 
-					<a href="{{route('categories')}}"><i class="fe fe-layout"></i> <span>Categories</span></a>
+					<a href="{{route('categories')}}"><i class="fe fe-layout"></i> <span>Kategori</span></a>
 				</li>
 				@endcan
 				
 				@can('view-products')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-document"></i> <span> Products</span> <span class="menu-arrow"></span></a>
+					<a href="#"><i class="fe fe-document"></i> <span> Produk</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
-						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Products</a></li>@endcan
-						@can('create-product')<li><a class="{{ Request::routeIs('add-product') ? 'active' : '' }}" href="{{route('add-product')}}">Add Product</a></li>@endcan
-						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Out-Stock</a></li>@endcan
+						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Produk</a></li>@endcan
+						@can('create-product')<li><a class="{{ Request::routeIs('add-product') ? 'active' : '' }}" href="{{route('add-product')}}">Tambah Produk</a></li>@endcan
+						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok keluar</a></li>@endcan
 						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Expired</a></li>@endcan
 					</ul>
 				</li>
@@ -45,7 +45,7 @@
 				@endcan
 				@can('view-supplier')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-user"></i> <span> Supplier</span> <span class="menu-arrow"></span></a>
+					<a href="#"><i class="fe fe-user"></i> <span> Suplayer</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						<li><a class="{{ Request::routeIs('suppliers') ? 'active' : '' }}" href="{{route('suppliers')}}">Supplier</a></li>
 						@can('create-supplier')<li><a class="{{ Request::routeIs('add-supplier') ? 'active' : '' }}" href="{{route('add-supplier')}}">Add Supplier</a></li>@endcan
@@ -55,7 +55,7 @@
 
 				@can('view-reports')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-document"></i> <span> Reports</span> <span class="menu-arrow"></span></a>
+					<a href="#"><i class="fe fe-document"></i> <span> laporan</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						<li><a class="{{ Request::routeIs('reports') ? 'active' : '' }}" href="{{route('reports')}}">Reports</a></li>
 					</ul>
@@ -64,7 +64,7 @@
 
 				@can('view-access-control')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-lock"></i> <span> Access Control</span> <span class="menu-arrow"></span></a>
+					<a href="#"><i class="fe fe-lock"></i> <span> Hak Akses</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						@can('view-permission')
 						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Permissions</a></li>
