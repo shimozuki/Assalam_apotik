@@ -23,7 +23,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="datatable-export" class="table table-striped table-bordered table-hover table-center mb-0">
+					<table  class="table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr>
 								<th>Nama obat</th>
