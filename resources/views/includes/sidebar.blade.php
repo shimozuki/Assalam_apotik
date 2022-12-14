@@ -22,14 +22,10 @@
 					<a href="#"><i class="fe fe-document"></i> <span> Produk</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Produk</a></li>@endcan
-<<<<<<< HEAD
 						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok keluar</a></li>@endcan
 						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Expired</a></li>@endcan
-=======
-						@can('create-product')<li><a class="{{ Request::routeIs('add-product') ? 'active' : '' }}" href="{{route('add-product')}}">Tambah Produk</a></li>@endcan
 						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok habis</a></li>@endcan
 						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Kedaluarsa</a></li>@endcan
->>>>>>> 1fbf6d778da1ed23b3a5c332782928b3f7fea30f
 					</ul>
 				</li>
 				@endcan
@@ -41,19 +37,9 @@
 				<li><a class="{{ Request::routeIs('sales') ? 'active' : '' }}" href="{{route('sales')}}"><i class="fe fe-activity"></i> <span>Penjualan</span></a></li>
 				@endcan
 				@can('view-supplier')
-<<<<<<< HEAD
 				<li class="{{ Request::routeIs('suppliers') ? 'active' : '' }}">
 					<a href="{{route('suppliers')}}"><i class="fe fe-user"></i> <span> Suplayer</span></a>
-=======
-				<li class="submenu">
-					<a href="#"><i class="fe fe-user"></i> <span> Supplier</span> <span class="menu-arrow"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ Request::routeIs('suppliers') ? 'active' : '' }}" href="{{route('suppliers')}}">Supplier</a></li>
-						@can('create-supplier')<li><a class="{{ Request::routeIs('add-supplier') ? 'active' : '' }}" href="{{route('add-supplier')}}">Add Supplier</a></li>@endcan
-					</ul>
->>>>>>> 1fbf6d778da1ed23b3a5c332782928b3f7fea30f
-				</li>
-				@endcan
+                </li>
 
 				@can('view-reports')
 				<li class="{{ Request::routeIs('reports') ? 'active' : '' }}">
