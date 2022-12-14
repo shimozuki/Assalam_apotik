@@ -48,7 +48,7 @@
 
 								<td class="text-center">
 									<div class="actions">
-										<a data-id="{{$role->id}}" data-role="{{$role->name}}" data-permissions="{{$role->getAllPermissions()}}" class="btn btn-sm bg-success-light editbtn" data-toggle="modal" href="javascript:void(0)">
+										<a data-id="{{$role->id}}" data-role="{{$role->name}}" data-permissions="{{$role->getAllPermissions()}}" class="btn btn-sm bg-success-light editbtn" data-toggle="modal" href="#edit_role">
 											<i class="fe fe-pencil"></i> Edit
 										</a>
 										<a data-id="{{$role->id}}" data-toggle="modal" href="javascript:void(0)" class="btn btn-sm bg-danger-light deletebtn">
