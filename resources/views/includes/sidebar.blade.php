@@ -23,8 +23,8 @@
 					<ul style="display: none;">
 						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Produk</a></li>@endcan
 						@can('create-product')<li><a class="{{ Request::routeIs('add-product') ? 'active' : '' }}" href="{{route('add-product')}}">Tambah Produk</a></li>@endcan
-						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok keluar</a></li>@endcan
-						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Expired</a></li>@endcan
+						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok habis</a></li>@endcan
+						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Kedaluarsa</a></li>@endcan
 					</ul>
 				</li>
 				@endcan
@@ -45,7 +45,7 @@
 				@endcan
 				@can('view-supplier')
 				<li class="submenu">
-					<a href="#"><i class="fe fe-user"></i> <span> Suplayer</span> <span class="menu-arrow"></span></a>
+					<a href="#"><i class="fe fe-user"></i> <span> Supplier</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						<li><a class="{{ Request::routeIs('suppliers') ? 'active' : '' }}" href="{{route('suppliers')}}">Supplier</a></li>
 						@can('create-supplier')<li><a class="{{ Request::routeIs('add-supplier') ? 'active' : '' }}" href="{{route('add-supplier')}}">Add Supplier</a></li>@endcan
@@ -67,7 +67,7 @@
 					<a href="#"><i class="fe fe-lock"></i> <span> Hak Akses</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						@can('view-permission')
-						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Permissions</a></li>
+						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Ijin Akses</a></li>
 						@endcan
 						@can('view-role')
 						<li><a class="{{ Request::routeIs('roles') ? 'active' : '' }}" href="{{route('roles')}}">Roles</a></li>
