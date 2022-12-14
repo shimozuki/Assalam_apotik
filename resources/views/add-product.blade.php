@@ -51,12 +51,12 @@
 							</div>
 						</div>
 
-						<div class="col-lg-6">
+						<!-- <div class="col-lg-6">
 							<div class="form-group">
 								<label>Discount (%)<span class="text-danger">*</span></label>
 								<input class="form-control" type="text" name="discount" value="0">
 							</div>
-						</div>
+						</div> -->
 						
 					</div>
 				</div>

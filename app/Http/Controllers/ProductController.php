@@ -90,7 +90,7 @@ class ProductController extends Controller
         Product::create([
             'purchase_id'=>$request->product,
             'price'=>$price,
-            'discount'=>$request->discount,
+            'discount'=> 0,
             'description'=>$request->description,
         ]);
         $notification=array(
@@ -140,7 +140,7 @@ class ProductController extends Controller
        $product->update([
             'purchase_id'=>$request->product,
             'price'=>$price,
-            'discount'=>$request->discount,
+            'discount'=> 0,
             'description'=>$request->description,
         ]);
         $notification=array(

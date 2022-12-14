@@ -7,14 +7,14 @@
 
 @push('page-header')
 <div class="col-sm-7 col-auto">
-	<h3 class="page-title">Products</h3>
+	<h3 class="page-title">Produk</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Products</li>
+		<li class="breadcrumb-item active">Produk</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="{{route('add-product')}}" class="btn btn-primary float-right mt-2">Add New</a>
+	<a href="{{route('add-product')}}" class="btn btn-primary float-right mt-2">Tambah Obat</a>
 </div>
 @endpush
 
@@ -32,9 +32,8 @@
 								<th>Nama Obat</th>
 								<th>Kategori</th>
 								<th>Harga</th>
-								<th>Quantity</th>
-								<th>Discount</th>
-								<th>Tanggal Expiry</th>
+								<th>Stok</th>
+								<th>Tanggal Expayet</th>
 								<th class="action-btn">Action</th>
 							</tr>
 						</thead>
@@ -57,7 +56,6 @@
 									<td>{{AppSettings::get('app_currency', '$')}} {{$product->price}}
 									</td>
 									<td>{{$product->purchase->quantity}}</td>
-									<td>{{$product->discount}}%</td>
 									<td>
 									{{date_format(date_create($product->purchase->expiry_date),"d M, Y")}}</span>										
 									</td>

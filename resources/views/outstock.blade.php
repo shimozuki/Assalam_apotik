@@ -7,10 +7,10 @@
 
 @push('page-header')
 <div class="col-sm-12">
-	<h3 class="page-title">Outstock</h3>
+	<h3 class="page-title">Stok Obat</h3>
 	<ul class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{route('products')}}">Medicine</a></li>
-		<li class="breadcrumb-item active">Outstock</li>
+		<li class="breadcrumb-item"><a href="{{route('products')}}">Produk</a></li>
+		<li class="breadcrumb-item active">terjual</li>
 	</ul>
 </div>
 @endpush
@@ -26,11 +26,10 @@
 					<table id="datatable-export" class=" table table-hover table-center mb-0">
 						<thead>
 							<tr>
-								<th>Brand Name</th>
-								<th>Category</th>
-								<th>Price</th>
-								<th>Quantity</th>
-								<th>Discount</th>
+								<th>Nama Obat</th>
+								<th>Kategori</th>
+								<th>Harga</th>
+								<th>Sisa Stok</th>
 								<th>Expire</th>
 								<th class="action-btn">Action</th>
 							</tr>
@@ -51,7 +50,6 @@
 								<td>{{$product->category->name}}</td>
 								<td>{{AppSettings::get('app_currency', '$')}}{{$product->price}}</td>
 								<td><span class="btn btn-sm bg-danger-light">Only {{$product->quantity}}</span></td>
-								<td>{{$product->discount}}%</td>
 								<td>
 									<span class="btn btn-sm bg-success-light">
 										{{date_format(date_create($product->expiry_date),"d M, Y")}}</span>	</span>

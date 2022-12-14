@@ -29,10 +29,10 @@
 					<table id="datatable-export" class="table table-hover table-center mb-0">
 						<thead>
 							<tr>
-								<th>Medicine Name</th>
-								<th>Medicine Category</th>
-								<th>Purchase Price</th>
-								<th>Quantity</th>
+								<th>Nama Obat</th>
+								<th>Kategori Obat</th>
+								<th>Harga Beli</th>
+								<th>Jumlah</th>
 								<th>Supplier</th>
 								<th>Expire Date</th>
 								<th class="action-btn">Action</th>

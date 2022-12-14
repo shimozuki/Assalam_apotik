@@ -29,12 +29,12 @@
 					<table id="datatable-export" class="table table-hover table-center mb-0">
 						<thead>
 							<tr>
-								<th>Product</th>
-								<th>Name</th>
+								<th>Produk</th>
+								<th>Nama</th>
 								<th>Phone</th>
 								<th>Email</th>
-								<th>Address</th>
-								<th>Company</th>
+								<th>Alamat</th>
+								<th>Nama PT</th>
 								<th class="action-btn">Action</th>
 							</tr>
 						</thead>

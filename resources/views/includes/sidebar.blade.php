@@ -22,43 +22,27 @@
 					<a href="#"><i class="fe fe-document"></i> <span> Produk</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Produk</a></li>@endcan
-						@can('create-product')<li><a class="{{ Request::routeIs('add-product') ? 'active' : '' }}" href="{{route('add-product')}}">Tambah Produk</a></li>@endcan
 						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok keluar</a></li>@endcan
 						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Expired</a></li>@endcan
 					</ul>
 				</li>
 				@endcan
 				
-				@can('view-purchase')
-				<li class="submenu">
-					<a href="#"><i class="fe fe-star-o"></i> <span> Pembelian</span> <span class="menu-arrow"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ Request::routeIs('purchases') ? 'active' : '' }}" href="{{route('purchases')}}">Pembelian</a></li>
-						@can('create-purchase')
-						<li><a class="{{ Request::routeIs('add-purchase') ? 'active' : '' }}" href="{{route('add-purchase')}}">Add Pembelian</a></li>
-						@endcan
-					</ul>
+				<li class="{{ Request::routeIs('purchases') ? 'active' : '' }}">
+				<a  href="{{route('purchases')}}"><i class="fe fe-star-o"></i> <span> Pembelian</span></a>
 				</li>
-				@endcan
 				@can('view-sales')
 				<li><a class="{{ Request::routeIs('sales') ? 'active' : '' }}" href="{{route('sales')}}"><i class="fe fe-activity"></i> <span>Penjualan</span></a></li>
 				@endcan
 				@can('view-supplier')
-				<li class="submenu">
-					<a href="#"><i class="fe fe-user"></i> <span> Suplayer</span> <span class="menu-arrow"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ Request::routeIs('suppliers') ? 'active' : '' }}" href="{{route('suppliers')}}">Supplier</a></li>
-						@can('create-supplier')<li><a class="{{ Request::routeIs('add-supplier') ? 'active' : '' }}" href="{{route('add-supplier')}}">Add Supplier</a></li>@endcan
-					</ul>
+				<li class="{{ Request::routeIs('suppliers') ? 'active' : '' }}">
+					<a href="{{route('suppliers')}}"><i class="fe fe-user"></i> <span> Suplayer</span></a>
 				</li>
 				@endcan
 
 				@can('view-reports')
-				<li class="submenu">
-					<a href="#"><i class="fe fe-document"></i> <span> laporan</span> <span class="menu-arrow"></span></a>
-					<ul style="display: none;">
-						<li><a class="{{ Request::routeIs('reports') ? 'active' : '' }}" href="{{route('reports')}}">Reports</a></li>
-					</ul>
+				<li class="{{ Request::routeIs('reports') ? 'active' : '' }}">
+					<a href="{{route('reports')}}"><i class="fe fe-document"></i> <span> laporan</span></a>
 				</li>
 				@endcan
 

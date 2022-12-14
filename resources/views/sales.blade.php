@@ -31,10 +31,10 @@
 					<table id="datatable-export" class="table table-hover table-center mb-0">
 						<thead>
 							<tr>
-								<th>Medicine Name</th>
-								<th>Quantity</th>
-								<th>Total Price</th>
-								<th>Date</th>
+								<th>Nama Obat</th>
+								<th>Stok</th>
+								<th>Total Harga</th>
+								<th>Tanggal</th>
 								<th class="action-btn">Action</th>
 							</tr>
 						</thead>

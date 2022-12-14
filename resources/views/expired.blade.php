@@ -9,7 +9,7 @@
 <div class="col-sm-12">
 	<h3 class="page-title">Expired</h3>
 	<ul class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{route('products')}}">Products</a></li>
+		<li class="breadcrumb-item"><a href="{{route('products')}}">Produk</a></li>
 		<li class="breadcrumb-item active">Expired</li>
 	</ul>
 </div>
@@ -26,11 +26,10 @@
 					<table id="datatable-export" class="table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr>
-								<th>Brand Name</th>
-								<th>Category</th>
-								<th>Price</th>
-								<th>Quantity</th>
-								<th>Discount</th>
+								<th>Nama obat</th>
+								<th>Kategory</th>
+								<th>Harga</th>
+								<th>Stok</th>
 								<th>Expire</th>
 								<th class="action-btn">Action</th>
 							</tr>
@@ -51,7 +50,6 @@
 								<td>{{$product->category->name}}</td>
 								<td>{{AppSettings::get('app_currency', '$')}}{{$product->price}}</td>
 								<td>{{$product->quantity}}</td>
-								<td>{{$product->discount}}%</td>
 								<td><span class="btn btn-sm bg-danger-light">THE PRODUCT IS EXPIRED</span></td>
 								<td>
 									<div class="actions">
