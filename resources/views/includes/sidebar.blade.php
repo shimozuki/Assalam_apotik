@@ -40,6 +40,7 @@
 				<li class="{{ Request::routeIs('suppliers') ? 'active' : '' }}">
 					<a href="{{route('suppliers')}}"><i class="fe fe-user"></i> <span> Suplayer</span></a>
                 </li>
+                @endcan
 
 				@can('view-reports')
 				<li class="{{ Request::routeIs('reports') ? 'active' : '' }}">
