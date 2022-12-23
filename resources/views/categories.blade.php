@@ -7,14 +7,14 @@
 
 @push('page-header')
 <div class="col-sm-7 col-auto">
-	<h3 class="page-title">Categories</h3>
+	<h3 class="page-title">Kategori</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Categories</li>
+		<li class="breadcrumb-item active">Kategori</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="#add_categories" data-toggle="modal" class="btn btn-primary float-right mt-2">Add Category</a>
+	<a href="#add_categories" data-toggle="modal" class="btn btn-primary float-right mt-2">Tambah Kategori</a>
 </div>
 
 @endpush
@@ -26,12 +26,12 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="category-table" class="datatable table table-striped table-bordered table-hover table-center mb-0">
+					<table id="category-table" class="table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr style="boder:1px solid black;">
 								<th>Nama Kategori</th>
 								<th>Tanggal</th>
-								<th class="text-center action-btn">Actions</th>
+								<th class="text-center action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -51,7 +51,7 @@
 											<i class="fe fe-pencil"></i> Edit
 										</a>
 										<a data-id="{{$category->id}}" data-toggle="modal" href="javascript:void(0)" class="btn btn-sm bg-danger-light deletebtn">
-											<i class="fe fe-trash"></i> Delete
+											<i class="fe fe-trash"></i> Hapus
 										</a>
 									</div>
 								</td>
@@ -99,7 +99,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Edit Category</h5>
+				<h5 class="modal-title">Edit Kategori</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>

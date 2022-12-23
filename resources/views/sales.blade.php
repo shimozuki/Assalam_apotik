@@ -28,11 +28,11 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-hover table-center mb-0">
+					<table class="datatable table table-hover table-center mb-0">
 						<thead>
 							<tr>
 								<th>Nama Obat</th>
-								<th>Stok</th>
+								<th>Jumlah</th>
 								<th>Total Harga</th>
 								<th>Tanggal</th>
 								<th class="action-btn">Action</th>

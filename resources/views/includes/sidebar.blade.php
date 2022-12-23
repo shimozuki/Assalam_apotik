@@ -21,7 +21,7 @@
 				<li class="submenu">
 					<a href="#"><i class="fe fe-document"></i> <span> Produk</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
-						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Data Produk</a></li>@endcan
+						@can('view-products')<li><a class="{{ Request::routeIs(('products')) ? 'active' : '' }}" href="{{route('products')}}">Produk</a></li>@endcan
 						@can('view-outstock-products')<li><a class="{{ Request::routeIs('outstock') ? 'active' : '' }}" href="{{route('outstock')}}">Stok habis</a></li>@endcan
 						@can('view-expired-products')<li><a class="{{ Request::routeIs('expired') ? 'active' : '' }}" href="{{route('expired')}}">Kedaluarsa</a></li>@endcan
 					</ul>
@@ -36,7 +36,7 @@
 				@endcan
 				@can('view-supplier')
 				<li class="{{ Request::routeIs('suppliers') ? 'active' : '' }}">
-					<a href="{{route('suppliers')}}"><i class="fe fe-user"></i> <span> Suplayer</span></a>
+					<a href="{{route('suppliers')}}"><i class="fe fe-user"></i> <span> Supplier</span></a>
                 </li>
                 @endcan
 
@@ -51,7 +51,7 @@
 					<a href="#"><i class="fe fe-lock"></i> <span> Hak Akses</span> <span class="menu-arrow"></span></a>
 					<ul style="display: none;">
 						@can('view-permission')
-						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Ijin Akses</a></li>
+						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Izin Akses</a></li>
 						@endcan
 						@can('view-role')
 						<li><a class="{{ Request::routeIs('roles') ? 'active' : '' }}" href="{{route('roles')}}">Roles</a></li>
@@ -62,18 +62,18 @@
 
 				@can('view-users')
 				<li class="{{ Request::routeIs('users') ? 'active' : '' }}"> 
-					<a href="{{route('users')}}"><i class="fe fe-users"></i> <span>Users</span></a>
+					<a href="{{route('users')}}"><i class="fe fe-users"></i> <span>User</span></a>
 				</li>
 				@endcan
 				
 				<li class="{{ Request::routeIs('profile') ? 'active' : '' }}"> 
-					<a href="{{route('profile')}}"><i class="fe fe-user-plus"></i> <span>Profile</span></a>
+					<a href="{{route('profile')}}"><i class="fe fe-user-plus"></i> <span>Profil</span></a>
 				</li>
 				@can('view-settings')
 				<li class="{{ Request::routeIs('settings') ? 'active' : '' }}"> 
 					<a href="{{route('settings')}}">
 						<i class="fa fa-gears"></i>
-						 <span> Settings</span>
+						 <span> Setting</span>
 					</a>
 				</li>
 				@endcan

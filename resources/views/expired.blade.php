@@ -50,7 +50,7 @@
 								<td>{{$product->category->name}}</td>
 								<td>{{AppSettings::get('app_currency', '$')}}{{$product->price}}</td>
 								<td>{{$product->quantity}}</td>
-								<td><span class="btn btn-sm bg-danger-light">THE PRODUCT IS EXPIRED</span></td>
+								<td><span class="btn btn-sm bg-danger-light">Obat telah kedaluarsa</span></td>
 								<td>
 									<div class="actions">
 										<a class="btn btn-sm bg-success-light" href="{{route('edit-product',$product)}}">
