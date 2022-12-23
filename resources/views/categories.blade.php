@@ -26,7 +26,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table id="category-table" class="datatable table table-striped table-bordered table-hover table-center mb-0">
+					<table id="category-table" class="table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr style="boder:1px solid black;">
 								<th>Nama Kategori</th>

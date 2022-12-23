@@ -100,7 +100,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-12 col-lg-6">
+		<div class="col-md-12 col-lg-12">
 		
 			<div class="card card-table">
 				<div class="card-header">
@@ -143,7 +143,7 @@
 		<div class="col-md-12 col-lg-6">
 						
 			<!-- Pie Chart -->
-			<div class="card card-chart">
+			<!-- <div class="card card-chart">
 				<div class="card-header">
 					<h4 class="card-title">Resources Sum</h4>
 				</div>
@@ -152,7 +152,7 @@
 						{!! $pieChart->render() !!}
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!-- /Pie Chart -->
 			
 		</div>	
