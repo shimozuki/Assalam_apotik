@@ -14,7 +14,7 @@
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="{{route('add-supplier')}}" class="btn btn-primary float-right mt-2">Add New</a>
+	<a href="{{route('add-supplier')}}" class="btn btn-primary float-right mt-2">Tambah Supplier</a>
 </div>
 @endpush
 
@@ -35,7 +35,7 @@
 								<th>Email</th>
 								<th>Alamat</th>
 								<th>Nama PT</th>
-								<th class="action-btn">Action</th>
+								<th class="action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -55,7 +55,7 @@
 											<i class="fe fe-pencil"></i> Edit
 										</a>
 										<a data-id="{{$supplier->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
-											<i class="fe fe-trash"></i> Delete
+											<i class="fe fe-trash"></i> Hapus
 										</a>
 									</div>
 								</td>

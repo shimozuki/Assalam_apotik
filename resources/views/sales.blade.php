@@ -15,7 +15,7 @@
 </div>
 @can('create-sales')
 <div class="col-sm-5 col">
-	<a href="#add_sales" data-toggle="modal" class="btn btn-primary float-right mt-2">Add Sales</a>
+	<a href="#add_sales" data-toggle="modal" class="btn btn-primary float-right mt-2">Tambah Penjualan</a>
 </div>
 @endcan
 @endpush
@@ -35,7 +35,7 @@
 								<th>Jumlah</th>
 								<th>Total Harga</th>
 								<th>Tanggal</th>
-								<th class="action-btn">Action</th>
+								<th class="action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -55,7 +55,7 @@
 												@endcan
 												@can('destroy-sales')
 												<a data-id="{{$sale->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
-													<i class="fe fe-trash"></i> Delete
+													<i class="fe fe-trash"></i> Hapus
 												</a>
 												@endcan
 											</div>

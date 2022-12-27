@@ -7,10 +7,10 @@
 
 @push('page-header')
 <div class="col-sm-12">
-	<h3 class="page-title">Stok Obat</h3>
+	<h3 class="page-title">Stok Habis</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('products')}}">Produk</a></li>
-		<li class="breadcrumb-item active">terjual</li>
+		<li class="breadcrumb-item active">Stok Habis</li>
 	</ul>
 </div>
 @endpush
@@ -29,9 +29,9 @@
 								<th>Nama Obat</th>
 								<th>Kategori</th>
 								<th>Harga</th>
-								<th>Sisa Stok</th>
-								<th>Expire</th>
-								<th class="action-btn">Action</th>
+								<th>Stok</th>
+								<th>Tanggal Kedaluarsa</th>
+								<th class="action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -60,7 +60,7 @@
 											<i class="fe fe-pencil"></i> Edit
 										</a>
 										<a data-id="{{$product->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
-											<i class="fe fe-trash"></i> Delete
+											<i class="fe fe-trash"></i> Hapus
 										</a>
 									</div>
 								</td>

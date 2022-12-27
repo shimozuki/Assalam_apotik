@@ -9,7 +9,7 @@
 <div class="col-sm-7 col-auto">
 	<h3 class="page-title">Produk</h3>
 	<ul class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Produk</a></li>
 		<li class="breadcrumb-item active">Produk</li>
 	</ul>
 </div>
@@ -33,8 +33,8 @@
 								<th>Kategori</th>
 								<th>Harga</th>
 								<th>Stok</th>
-								<th>Tanggal Expayet</th>
-								<th class="action-btn">Action</th>
+								<th>Tanggal Kedaluarsa</th>
+								<th class="action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -65,7 +65,7 @@
 												<i class="fe fe-pencil"></i> Edit
 											</a>
 											<a data-id="{{$product->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
-												<i class="fe fe-trash"></i> Delete
+												<i class="fe fe-trash"></i> hapus
 											</a>
 										</div>
 									</td>

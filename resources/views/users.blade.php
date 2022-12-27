@@ -10,11 +10,11 @@
 	<h3 class="page-title">User</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Users</li>
+		<li class="breadcrumb-item active">User</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="#add_user" data-toggle="modal" class="btn btn-primary float-right mt-2">Add User</a>
+	<a href="#add_user" data-toggle="modal" class="btn btn-primary float-right mt-2">Tambah User</a>
 </div>
 
 @endpush
@@ -29,11 +29,11 @@
 					<table  class=" table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr style="boder:1px solid black;">
-								<th>Name</th>
+								<th>Nama</th>
 								<th>Email</th>
 								<th>Role</th>
-								<th>Created date</th>
-								<th class="text-center action-btn">Actions</th>
+								<th>Tanggal</th>
+								<th class="text-center action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -67,7 +67,7 @@
 											<i class="fe fe-pencil"></i> Edit
 										</a>
 										<a data-id="{{$user->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
-											<i class="fe fe-trash"></i> Delete
+											<i class="fe fe-trash"></i> Hapus
 										</a>
 									</div>
 								</td>

@@ -54,7 +54,7 @@
 						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Izin Akses</a></li>
 						@endcan
 						@can('view-role')
-						<li><a class="{{ Request::routeIs('roles') ? 'active' : '' }}" href="{{route('roles')}}">Roles</a></li>
+						<li><a class="{{ Request::routeIs('roles') ? 'active' : '' }}" href="{{route('roles')}}">Role</a></li>
 						@endcan
 					</ul>
 				</li>					

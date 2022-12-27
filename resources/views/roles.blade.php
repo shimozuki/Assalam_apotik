@@ -7,14 +7,14 @@
 
 @push('page-header')
 <div class="col-sm-7 col-auto">
-	<h3 class="page-title">Roles</h3>
+	<h3 class="page-title">Role</h3>
 	<ul class="breadcrumb">
 		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Roles</li>
+		<li class="breadcrumb-item active">Role</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="#add_role" data-toggle="modal" class="btn btn-primary float-right mt-2">Add Role</a>
+	<a href="#add_role" data-toggle="modal" class="btn btn-primary float-right mt-2">Tambah Role</a>
 </div>
 
 @endpush
@@ -29,9 +29,9 @@
 					<table id="roles-table" class="table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr style="boder:1px solid black;">
-								<th>Name</th>
-								<th>Permissions</th>
-								<th class="text-center action-btn">Actions</th>
+								<th>Nama Role</th>
+								<th>Izin Akses</th>
+								<th class="text-center action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -52,7 +52,7 @@
 											<i class="fe fe-pencil"></i> Edit
 										</a>
 										<a data-id="{{$role->id}}" data-toggle="modal" href="javascript:void(0)" class="btn btn-sm bg-danger-light deletebtn">
-											<i class="fe fe-trash"></i> Delete
+											<i class="fe fe-trash"></i> Hapus
 										</a>
 									</div>
 								</td>
@@ -71,7 +71,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Add Role</h5>
+				<h5 class="modal-title">Tambah Role</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -86,7 +86,7 @@
 								<input type="text" name="role" class="form-control">
 							</div>
 							<div class="form-group">
-								<lable>Select Permissions</lable>
+								<lable>Pilih izin akses</lable>
 								<select class="select2 form-select form-control" name="permission[]" multiple="multiple"> 
 									@foreach ($permissions as $permission)
 										<option value="{{$permission->name}}">{{$permission->name}}</option>

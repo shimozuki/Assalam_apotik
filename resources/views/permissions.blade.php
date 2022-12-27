@@ -7,14 +7,14 @@
 
 @push('page-header')
 <div class="col-sm-7 col-auto">
-	<h3 class="page-title">Permissions</h3>
+	<h3 class="page-title">Izin Akses</h3>
 	<ul class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Permissions</li>
+		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Hak Akses</a></li>
+		<li class="breadcrumb-item active">Izin Akses</li>
 	</ul>
 </div>
 <div class="col-sm-5 col">
-	<a href="#add_permission" data-toggle="modal" class="btn btn-primary float-right mt-2">Add Permission</a>
+	<a href="#add_permission" data-toggle="modal" class="btn btn-primary float-right mt-2">Tambah izin Akses</a>
 </div>
 
 @endpush
@@ -29,9 +29,9 @@
 					<table id="perm-table" class="datatable table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr style="boder:1px solid black;">
-								<th>Name</th>
-								<th>Created date</th>
-								<th class="text-center action-btn">Actions</th>
+								<th>Nama Izin Akses</th>
+								<th>Tanggal</th>
+								<th class="text-center action-btn">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -52,7 +52,7 @@
 										@endcan
 										@can('destroy-permission')
 										<a data-id="{{$permission->id}}" data-toggle="modal" href="javascript:void(0)" class="btn btn-sm bg-danger-light deletebtn">
-											<i class="fe fe-trash"></i> Delete
+											<i class="fe fe-trash"></i> Hapus
 										</a>
 										@endcan
 									</div>
@@ -72,7 +72,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Add Permission</h5>
+				<h5 class="modal-title">Tambah izin akses</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -83,7 +83,7 @@
 					<div class="row form-row">
 						<div class="col-12">
 							<div class="form-group">
-								<label>Permission</label>
+								<label>izin akses</label>
 								<input type="text" name="permission" class="form-control">
 							</div>
 						</div>

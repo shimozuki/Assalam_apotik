@@ -69,7 +69,7 @@
 					</div>
 					<div class="dash-widget-info">
 						
-						<h6 class="text-muted">Produk Expired</h6>
+						<h6 class="text-muted">Produk Kedaluarsa</h6>
 						<div class="progress progress-sm">
 							<div class="progress-bar bg-danger w-50"></div>
 						</div>
@@ -90,7 +90,7 @@
 					</div>
 					<div class="dash-widget-info">
 						
-						<h6 class="text-muted">Users</h6>
+						<h6 class="text-muted">User</h6>
 						<div class="progress progress-sm">
 							<div class="progress-bar bg-warning w-50"></div>
 						</div>
@@ -99,44 +99,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-12 col-lg-12">
-		
-			<div class="card card-table">
-				<div class="card-header">
-					<h4 class="card-title ">Data Penjualan</h4>
-				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-hover table-center mb-0">
-							<thead>
-								<tr>
-									<th>Obat</th>
-									<th>Quantity</th>
-									<th>Total Harga</th>
-									<th>Tanggal</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($latest_sales as $sale)
-									@if(!empty($sale->product->purchase))
-										<tr>
-											<td>{{$sale->product->purchase->name}}</td>
-											<td>{{$sale->quantity}}</td>
-											<td>
-												{{AppSettings::get('app_currency', '$')}} {{($sale->total_price)}}
-											</td>
-											<td>{{date_format(date_create($sale->created_at),"d M, Y")}}</td>
-											
-										</tr>
-									@endif
-								@endforeach
-																
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+	
 			
 		</div>
 
@@ -144,6 +107,16 @@
 						
 			<!-- Pie Chart -->
 			
+			<!-- <div class="card card-chart">
+				<div class="card-header">
+					<h4 class="card-title">Resources Sum</h4>
+				</div>
+				<div class="card-body">
+					<div style="width:65%;">
+						{!! $pieChart->render() !!}
+					</div>
+				</div>
+			</div> -->
 			<!-- /Pie Chart -->
 			
 		</div>	

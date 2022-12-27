@@ -7,9 +7,9 @@
 
 @push('page-header')
 <div class="col-sm-7 col-auto">
-	<h3 class="page-title">Reports</h3>
+	<h3 class="page-title">Laporan</h3>
 	<ul class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
+		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Laporan</a></li>
 		<li class="breadcrumb-item active">Buat Laporan</li>
 	</ul>
 </div>
@@ -112,10 +112,10 @@
 									<th>Nama Obat</th>
 									<th>Kategori</th>
 									<th>Harga</th>
-									<th>Quantity</th>
-									<th>Discount</th>
-									<th>Tanggal Expiry</th>
-									<th class="action-btn">Action</th>
+									<th>Jumlah</th>
+									
+									<th>Tanggal Kedaluarsa</th>
+									<th class="action-btn"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -137,19 +137,12 @@
 											<td>{{AppSettings::get('app_currency', '$')}} {{$product->price}}
 											</td>
 											<td>{{$product->purchase->quantity}}</td>
-											<td>{{$product->discount}}%</td>
+											
 											<td>
 											{{date_format(date_create($product->purchase->expiry_date),"d M, Y")}}</span>										
 											</td>
 											<td>
-												<div class="actions">
-													<a class="btn btn-sm bg-success-light" href="{{route('edit-product',$product)}}">
-														<i class="fe fe-pencil"></i> Edit
-													</a>
-													<a data-id="{{$product->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
-														<i class="fe fe-trash"></i> Delete
-													</a>
-												</div>
+												
 											</td>
 										</tr>
 									@endif
