@@ -58,27 +58,27 @@ return [
                 ],
             ]
         ],
-        'email' => [
-            'title' => 'Email Settings',
-            'descriptions' => '',
-            'icon' => 'fa fa-envelope',
+        // 'email' => [
+        //     'title' => 'Email Settings',
+        //     'descriptions' => '',
+        //     'icon' => 'fa fa-envelope',
 
-            'inputs' => [
-                [
-                    'name' => 'from_email',
-                    'type' => 'email',
-                    'label' => 'From Email',
-                    'placeholder' => 'Application from email',
-                    'rules' => 'required|email',
-                ],
-                [
-                    'name' => 'from_name',
-                    'type' => 'text',
-                    'label' => 'Email from Name',
-                    'placeholder' => 'Email from Name',
-                ]
-            ]
-        ]
+        //     'inputs' => [
+        //         [
+        //             'name' => 'from_email',
+        //             'type' => 'email',
+        //             'label' => 'From Email',
+        //             'placeholder' => 'Application from email',
+        //             'rules' => 'required|email',
+        //         ],
+        //         [
+        //             'name' => 'from_name',
+        //             'type' => 'text',
+        //             'label' => 'Email from Name',
+        //             'placeholder' => 'Email from Name',
+        //         ]
+        //     ]
+        // ]
     ],
 
     // Setting page url, will be used for get and post request

@@ -26,7 +26,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table  class=" table table-striped table-bordered table-hover table-center mb-0">
+					<table id="datatable" class=" table table-striped table-bordered table-hover table-center mb-0">
 						<thead>
 							<tr style="boder:1px solid black;">
 								<th>Nama</th>
@@ -235,7 +235,7 @@
 
 	<script>
 		$(document).ready(function() {
-			$('#datatable-export').on('click','.editbtn',function (){
+			$('#datatable').on('click','.editbtn',function (){
 				event.preventDefault();
 				jQuery.noConflict();
 				$('#edit_user').modal('show');

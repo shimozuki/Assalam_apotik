@@ -154,7 +154,7 @@
 <script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 	<script>
 		$(document).ready(function() {
-			$('#role').on('click','.editbtn',function (){
+			$('#roles-table').on('click','.editbtn',function (){
 				event.preventDefault();
 				jQuery.noConflict();
 				$('#edit_role').modal('show');

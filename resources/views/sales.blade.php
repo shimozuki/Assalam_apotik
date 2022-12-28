@@ -28,7 +28,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="datatable table table-hover table-center mb-0">
+					<table id="datatable" class="datatable table table-hover table-center mb-0">
 						<thead>
 							<tr>
 								<th>Nama Obat</th>
@@ -172,7 +172,7 @@
 	<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 	<script>
 		$(document).ready(function(){
-			$('#datatable-export').on('click','.editbtn',function (){
+			$('#datatable').on('click','.editbtn',function (){
 				event.preventDefault();
 				jQuery.noConflict();
 				$('#edit_sale').modal('show');

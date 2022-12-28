@@ -170,7 +170,7 @@
 									<th>Quantity</th>
 									<th>Supplier</th>
 									<th>Expire Date</th>
-									<th class="action-btn">Action</th>
+									<!-- <th class="action-btn">Action</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -192,7 +192,7 @@
 										<td>{{$purchase->quantity}}</td>
 										<td>{{$purchase->supplier->name}}</td>
 										<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
-										<td>
+										<!-- <td>
 											<div class="actions">
 												<a class="btn btn-sm bg-success-light" href="{{route('edit-purchase',$purchase)}}">
 													<i class="fe fe-pencil"></i> Edit
@@ -201,7 +201,7 @@
 													<i class="fe fe-trash"></i> Delete
 												</a>
 											</div>
-										</td>
+										</td> -->
 									</tr>
 									@endif
 								@endforeach
