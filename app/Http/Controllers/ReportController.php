@@ -31,21 +31,22 @@ class ReportController extends Controller
         if ($request->resource == 'sales'){
             // DB::enableQueryLog();
             $sales = Sales::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date, $jam))->get();
-            $produk = Product::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
+            foreach ($sales as $key => $value) {
+                $produk_id[] = $value->product_id;
+            }
+            // DB::enableQueryLog();
+            $produk = Product::join('purchases', 'purchases.id', '=', 'products.purchase_id')->whereIn('products.id', $produk_id)->get();
             // dd(DB::getQueryLog());
             foreach ($produk as $key => $value) {
-                $id = $value->purchase_id;
-            }
-            $pembelian = Purchase::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->where('id', $id)->get();
-            foreach ($pembelian as $key => $value) {
                 $harga_beli = $value->price;
             }
+            $total_beli = $produk->sum('price');
             $total_sales = $sales->count();
             $total_cash =$sales->sum('total_price');
-            $laba_rugi = $total_cash - $harga_beli;
+            $laba_rugi = $total_cash - $total_beli;
             $title = "Sales Reports";
             // echo "<pre>";
-            // print_r($pembelian);
+            // print_r($produk);
             // echo "</pre>";
         
             return view('reports',compact('sales','title','total_sales','total_cash', 'laba_rugi', 'harga_beli'));
