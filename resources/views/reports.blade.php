@@ -92,7 +92,7 @@
 							@endforeach
 							<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
 								<br />
-								<b>Total Penjualan : {{$total_cash}} <b>
+								<b>Total Penjualan : {{$harga_beli}} <b>
 								<br />
 								<b>_________________________________-</b>
 								<br />
