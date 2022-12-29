@@ -92,6 +92,10 @@
 							@endforeach
 							<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
 								<br />
+								<b>Total Penjualan : {{$total_cash}} <b>
+								<br />
+								<b>_________________________________-</b>
+								<br />
 								<b>Laba Rugi : {{$laba_rugi}} <b>
 							</td>
 						</tbody>
