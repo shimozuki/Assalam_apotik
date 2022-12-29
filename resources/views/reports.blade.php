@@ -89,6 +89,7 @@
 								<td>{{$sale->created_at}}</td>
 							</tr>
 							@endif
+							
 							@endforeach
 							<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
 								<br />
