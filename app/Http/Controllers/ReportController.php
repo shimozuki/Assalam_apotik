@@ -36,9 +36,6 @@ class ReportController extends Controller
             foreach ($pembelian as $key => $value) {
                 $harga_beli = $value->price;
             }
-            foreach ($sales as $key => $value) {
-                $total_jual = $value->total_price;
-            }
             $total_sales = $sales->count();
             $total_cash =$sales->sum('total_price');
             $laba_rugi = $total_cash - $harga_beli;
