@@ -55,13 +55,10 @@
 					</div>
 				</div>
 				<div class="dash-widget-info">
-<<<<<<< HEAD
 					
 					<h6 class="text-muted">Total Penjualan</h6>
-=======
 
 					<h6 class="text-muted">Total Sales</h6>
->>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 					<div class="progress progress-sm">
 						<div class="progress-bar bg-success w-50"></div>
 					</div>
@@ -164,7 +161,6 @@
 		@endisset
 
 		@isset($purchases)
-<<<<<<< HEAD
 			<!-- Purchases-->
 			<div class="card">
 				<div class="card-body">
@@ -201,7 +197,6 @@
 										<td>{{$purchase->supplier->name}}</td>
 										<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
 										<!-- <td>
-=======
 		<!-- Purchases-->
 		<div class="card">
 			<div class="card-body">
@@ -238,7 +233,6 @@
 								<td>{{$purchase->supplier->name}}</td>
 								<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
 								<!-- <td>
->>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 											<div class="actions">
 												<a class="btn btn-sm bg-success-light" href="{{route('edit-purchase',$purchase)}}">
 													<i class="fe fe-pencil"></i> Edit
@@ -292,19 +286,16 @@
 								</div>
 							</div>
 							<div class="form-group">
-<<<<<<< HEAD
 								<label>Pilih laporan</label>
 								<select class="form-control select" name="resource"> 
 									<option value="products">Produk</option>
 									<option value="purchases">Pembelian</option>
 									<option value="sales">Penjualan</option>
-=======
 								<label>Resource</label>
 								<select class="form-control select" name="resource">
 									<option value="products">Products</option>
 									<option value="purchases">Purchases</option>
 									<option value="sales">Sales</option>
->>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 								</select>
 							</div>
 						</div>
