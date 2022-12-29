@@ -55,8 +55,13 @@
 					</div>
 				</div>
 				<div class="dash-widget-info">
+<<<<<<< HEAD
+					
+					<h6 class="text-muted">Total Penjualan</h6>
+=======
 
 					<h6 class="text-muted">Total Sales</h6>
+>>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 					<div class="progress progress-sm">
 						<div class="progress-bar bg-success w-50"></div>
 					</div>
@@ -159,6 +164,44 @@
 		@endisset
 
 		@isset($purchases)
+<<<<<<< HEAD
+			<!-- Purchases-->
+			<div class="card">
+				<div class="card-body">
+					<div class="table-responsive">
+						<table id="datatable-export" class="table table-hover table-center mb-0">
+							<thead>
+								<tr>
+									<th>Nama Obat</th>
+									<th>Kategori</th>
+									<th>Harga Beli</th>
+									<th>Jumlah</th>
+									<th>Supplier</th>
+									<th>Tanggal Kedaluarsa</th>
+									<!-- <th class="action-btn">Action</th> -->
+								</tr>
+							</thead>
+							<tbody>
+								@foreach ($purchases as $purchase)
+									@if(!empty($purchase->supplier) && !empty($purchase->category))
+									<tr>
+										<td>
+											<h2 class="table-avatar">
+												@if(!empty($purchase->image))
+												<span class="avatar avatar-sm mr-2">
+													<img class="avatar-img" src="{{asset('storage/purchases/'.$purchase->image)}}" alt="product image">
+												</span>
+												@endif
+												{{$purchase->name}}
+											</h2>
+										</td>
+										<td>{{$purchase->category->name}}</td>
+										<td>{{AppSettings::get('app_currency', '$')}}{{$purchase->price}}</td>
+										<td>{{$purchase->quantity}}</td>
+										<td>{{$purchase->supplier->name}}</td>
+										<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
+										<!-- <td>
+=======
 		<!-- Purchases-->
 		<div class="card">
 			<div class="card-body">
@@ -195,6 +238,7 @@
 								<td>{{$purchase->supplier->name}}</td>
 								<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
 								<!-- <td>
+>>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 											<div class="actions">
 												<a class="btn btn-sm bg-success-light" href="{{route('edit-purchase',$purchase)}}">
 													<i class="fe fe-pencil"></i> Edit
@@ -223,7 +267,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Generate Report</h5>
+				<h5 class="modal-title">Buat Laporan</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -248,16 +292,24 @@
 								</div>
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
+								<label>Pilih laporan</label>
+								<select class="form-control select" name="resource"> 
+									<option value="products">Produk</option>
+									<option value="purchases">Pembelian</option>
+									<option value="sales">Penjualan</option>
+=======
 								<label>Resource</label>
 								<select class="form-control select" name="resource">
 									<option value="products">Products</option>
 									<option value="purchases">Purchases</option>
 									<option value="sales">Sales</option>
+>>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 								</select>
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+					<button type="submit" class="btn btn-primary btn-block">Buat</button>
 				</form>
 			</div>
 		</div>

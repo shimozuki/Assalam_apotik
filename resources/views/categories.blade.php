@@ -112,13 +112,13 @@
 						<div class="col-12">
 							<input type="hidden" name="id" id="edit_id">
 							<div class="form-group">
-								<label>Category</label>
+								<label>Kategori</label>
 								<input type="text" class="form-control edit_name" name="name">
 							</div>
 						</div>
 						
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+					<button type="submit" class="btn btn-primary btn-block">Simpan</button>
 				</form>
 			</div>
 		</div>
