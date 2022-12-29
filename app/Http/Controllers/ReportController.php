@@ -44,11 +44,7 @@ class ReportController extends Controller
             $total_sales = $sales->count();
             $total_cash =$sales->sum('total_price');
             $laba_rugi = $total_cash - $total_beli;
-            $title = "Sales Reports";
-            // echo "<pre>";
-            // print_r($produk);
-            // echo "</pre>";
-        
+            $title = "Sales Reports";        
             return view('reports',compact('sales','title','total_sales','total_cash', 'laba_rugi', 'harga_beli'));
         }
         if($request->resource == "products"){

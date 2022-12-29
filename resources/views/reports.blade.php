@@ -23,7 +23,7 @@
 
 <div class="row">
 	@isset($sales)
-	<div class="col-xl-3 col-sm-6 col-12">
+	<div class="col-xl-6 col-sm-6 col-12">
 		<div class="card">
 			<div class="card-body">
 				<div class="dash-widget-header">
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<div class="dash-widget-info">
-					<h6 class="text-muted">Total Cash</h6>
+					<h6 class="text-muted">Total Penjualan</h6>
 					<div class="progress progress-sm">
 						<div class="progress-bar bg-primary w-50"></div>
 					</div>
@@ -90,11 +90,11 @@
 							</tr>
 							@endif
 							@endforeach
-							<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
+						</tbody>
+						<td colspanrow="4"><b>Total Penjualan : {{$total_cash}} <b>
 								<br />
 								<b>Laba Rugi : {{$laba_rugi}} <b>
 							</td>
-						</tbody>
 					</table>
 				</div>
 			</div>
