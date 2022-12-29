@@ -9,10 +9,10 @@
 
 @push('page-header')
 <div class="col-sm-12">
-	<h3 class="page-title">Add Purchase</h3>
+	<h3 class="page-title">Tambah Pembelian</h3>
 	<ul class="breadcrumb">
-		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-		<li class="breadcrumb-item active">Add Purchase</li>
+		<li class="breadcrumb-item"><a href="{{route('dashboard')}}">Produk</a></li>
+		<li class="breadcrumb-item active">Tambah Pembelian</li>
 	</ul>
 </div>
 @endpush
@@ -68,7 +68,7 @@
 							</div>
 							<div class="col-lg-6">
 								<div class="form-group">
-									<label>Quantity<span class="text-danger">*</span></label>
+									<label>Jumlah<span class="text-danger">*</span></label>
 									<input class="form-control" type="text" name="quantity">
 								</div>
 							</div>
@@ -79,7 +79,7 @@
 						<div class="row">
 							<div class="col-lg-6">
 								<div class="form-group">
-									<label>Tanggal Expayet<span class="text-danger">*</span></label>
+									<label>Tanggal Kedaluarsa<span class="text-danger">*</span></label>
 									<input class="form-control" type="date" name="expiry_date">
 								</div>
 							</div>
@@ -94,7 +94,7 @@
 					
 					
 					<div class="submit-section">
-						<button class="btn btn-primary submit-btn" type="submit" >Submit</button>
+						<button class="btn btn-primary submit-btn" type="submit" >Simpan</button>
 					</div>
 				</form>
 				<!-- /Add Medicine -->

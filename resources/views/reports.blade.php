@@ -56,7 +56,7 @@
 				</div>
 				<div class="dash-widget-info">
 					
-					<h6 class="text-muted">Total Sales</h6>
+					<h6 class="text-muted">Total Penjualan</h6>
 					<div class="progress progress-sm">
 						<div class="progress-bar bg-success w-50"></div>
 					</div>
@@ -164,12 +164,12 @@
 						<table id="datatable-export" class="table table-hover table-center mb-0">
 							<thead>
 								<tr>
-									<th>Medicine Name</th>
-									<th>Medicine Category</th>
-									<th>Purchase Price</th>
-									<th>Quantity</th>
+									<th>Nama Obat</th>
+									<th>Kategori</th>
+									<th>Harga Beli</th>
+									<th>Jumlah</th>
 									<th>Supplier</th>
-									<th>Expire Date</th>
+									<th>Tanggal Kedaluarsa</th>
 									<!-- <th class="action-btn">Action</th> -->
 								</tr>
 							</thead>
@@ -221,7 +221,7 @@
 	<div class="modal-dialog modal-dialog-centered" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title">Generate Report</h5>
+				<h5 class="modal-title">Buat Laporan</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
@@ -246,16 +246,16 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label>Resource</label>
+								<label>Pilih laporan</label>
 								<select class="form-control select" name="resource"> 
-									<option value="products">Products</option>
-									<option value="purchases">Purchases</option>
-									<option value="sales">Sales</option>
+									<option value="products">Produk</option>
+									<option value="purchases">Pembelian</option>
+									<option value="sales">Penjualan</option>
 								</select>
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+					<button type="submit" class="btn btn-primary btn-block">Buat</button>
 				</form>
 			</div>
 		</div>
