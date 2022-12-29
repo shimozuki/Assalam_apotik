@@ -41,7 +41,7 @@
 									<h2 class="table-avatar">
 										@if(!empty($product->image))
 										<span class="avatar avatar-sm mr-2">
-											<img class="avatar-img" src="{{asset('storage/products/'.$product->image)}}" alt="product image">
+											<img class="avatar-img" src="{{asset('storage/purchases/'.$product->image)}}" alt="product image">
 										</span>
 										@endif
 										{{$product->name}}
