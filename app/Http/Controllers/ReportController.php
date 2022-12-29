@@ -36,9 +36,10 @@ class ReportController extends Controller
             foreach ($pembelian as $key => $value) {
                 $harga_beli = $value->price;
             }
+            $total_pembelian = $pembelian->sum('price');
             $total_sales = $sales->count();
             $total_cash =$sales->sum('total_price');
-            $laba_rugi = $total_cash - $harga_beli;
+            $laba_rugi = $total_cash - $total_pembelian;
             $title = "Sales Reports";
             return view('reports',compact('sales','title','total_sales','total_cash', 'laba_rugi', 'harga_beli'));
         }
