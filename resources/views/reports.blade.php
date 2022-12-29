@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @push('page-css')
-	<!-- Select2 CSS -->
-	<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="{{asset('assets/plugins/select2/css/select2.min.css')}}">
 @endpush
 
 @push('page-header')
@@ -20,7 +20,7 @@
 
 
 @section('content')
-	
+
 <div class="row">
 	@isset($sales)
 	<div class="col-xl-3 col-sm-6 col-12">
@@ -55,8 +55,13 @@
 					</div>
 				</div>
 				<div class="dash-widget-info">
+<<<<<<< HEAD
 					
 					<h6 class="text-muted">Total Penjualan</h6>
+=======
+
+					<h6 class="text-muted">Total Sales</h6>
+>>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 					<div class="progress progress-sm">
 						<div class="progress-bar bg-success w-50"></div>
 					</div>
@@ -66,97 +71,99 @@
 	</div>
 	@endisset
 	<div class="col-md-12">
-	
+
 		@isset($sales)
-			<!--  Sales -->
-			<div class="card">
-				<div class="card-body">
-					<div class="table-responsive">
-						<table id="datatable-export" class="table table-hover table-center mb-0">
-							<thead>
-									<th>Nama Obat</th>
-									<th>Jumlah</th>
-									<th>Total Harga</th>
-									<th>Laba Rugi</th>
-									<th>Tanggal</th>
-								</tr>
-							</thead>
-							<tbody>
-								@foreach ($sales as $sale)
-									@if (!(empty($sale->product->purchase)))
-										<tr>
-											<td>{{$sale->product->purchase->name}}</td>
-											<td>{{$sale->quantity}}</td>
-											<td>{{AppSettings::get('app_currency', '$')}} {{($sale->total_price)}}</td>
-											<td>{{AppSettings::get('app_currency', '$')}} {{$laba_rugi}}</td>
-											<td>{{$sale->created_at}}</td>
-										</tr>
-									@endif
-								@endforeach
-							</tbody>
-						</table>
-					</div>
+		<!--  Sales -->
+		<div class="card">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="datatable-export" class="table table-hover table-center mb-0">
+						<thead>
+							<th>Nama Obat</th>
+							<th>Jumlah</th>
+							<th>Total Harga</th>
+							<th>Tanggal</th>
+						</thead>
+						<tbody>
+							@foreach ($sales as $sale)
+							@if (!(empty($sale->product->purchase)))
+							<tr>
+								<td>{{$sale->product->purchase->name}}</td>
+								<td>{{$sale->quantity}}</td>
+								<td>{{AppSettings::get('app_currency', '$')}} {{($sale->total_price)}}</td>
+								<td>{{$sale->created_at}}</td>
+							</tr>
+							@endif
+							@endforeach
+							<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
+								<br />
+								<b>Laba Rugi : {{$laba_rugi}} <b>
+							</td>
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<!-- / sales -->
+		</div>
+		<!-- / sales -->
 		@endisset
 
 		@isset($products)
-			<!-- Products -->
-			<div class="card">
-				<div class="card-body">
-					<div class="table-responsive">
-						<table id="datatable-export" class="table table-hover table-center mb-0">
-							<thead>
-								<tr>
-									<th>Nama Obat</th>
-									<th>Kategori</th>
-									<th>Harga</th>
-									<th>Jumlah</th>
-									
-									<th>Tanggal Kedaluarsa</th>
-									<th class="action-btn"></th>
-								</tr>
-							</thead>
-							<tbody>
+		<!-- Products -->
+		<div class="card">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="datatable-export" class="table table-hover table-center mb-0">
+						<thead>
+							<tr>
+								<th>Nama Obat</th>
+								<th>Kategori</th>
+								<th>Harga</th>
+								<th>Jumlah</th>
 
-								@foreach ($products as $product)
-									@if (!(empty($product->purchase)))
-										<tr>
-											<td>
-												<h2 class="table-avatar">
-													@if(!empty($product->purchase->image))
-													<span class="avatar avatar-sm mr-2">
-														<img class="avatar-img" src="{{asset('storage/purchases/'.$product->purchase->image)}}" alt="product image">
-													</span>
-													@endif
-													{{$product->purchase->name}}
-												</h2>
-											</td>
-											<td>{{$product->purchase->category->name}}</td>
-											<td>{{AppSettings::get('app_currency', '$')}} {{$product->price}}
-											</td>
-											<td>{{$product->purchase->quantity}}</td>
-											
-											<td>
-											{{date_format(date_create($product->purchase->expiry_date),"d M, Y")}}</span>										
-											</td>
-											<td>
-												
-											</td>
-										</tr>
-									@endif
-								@endforeach
-								
-							</tbody>
-						</table>
-					</div>
+								<th>Tanggal Kedaluarsa</th>
+								<th class="action-btn"></th>
+							</tr>
+						</thead>
+						<tbody>
+
+							@foreach ($products as $product)
+							@if (!(empty($product->purchase)))
+							<tr>
+								<td>
+									<h2 class="table-avatar">
+										@if(!empty($product->purchase->image))
+										<span class="avatar avatar-sm mr-2">
+											<img class="avatar-img" src="{{asset('storage/purchases/'.$product->purchase->image)}}" alt="product image">
+										</span>
+										@endif
+										{{$product->purchase->name}}
+									</h2>
+								</td>
+								<td>{{$product->purchase->category->name}}</td>
+								<td>{{AppSettings::get('app_currency', '$')}} {{$product->price}}
+								</td>
+								<td>{{$product->purchase->quantity}}</td>
+
+								<td>
+									{{date_format(date_create($product->purchase->expiry_date),"d M, Y")}}</span>
+								</td>
+								<td>
+
+								</td>
+							</tr>
+							@endif
+							@endforeach
+
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<!-- /Products -->
+		</div>
+		<!-- /Products -->
 		@endisset
-		
+
 		@isset($purchases)
+<<<<<<< HEAD
 			<!-- Purchases-->
 			<div class="card">
 				<div class="card-body">
@@ -193,6 +200,44 @@
 										<td>{{$purchase->supplier->name}}</td>
 										<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
 										<!-- <td>
+=======
+		<!-- Purchases-->
+		<div class="card">
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="datatable-export" class="table table-hover table-center mb-0">
+						<thead>
+							<tr>
+								<th>Medicine Name</th>
+								<th>Medicine Category</th>
+								<th>Purchase Price</th>
+								<th>Quantity</th>
+								<th>Supplier</th>
+								<th>Expire Date</th>
+								<!-- <th class="action-btn">Action</th> -->
+							</tr>
+						</thead>
+						<tbody>
+							@foreach ($purchases as $purchase)
+							@if(!empty($purchase->supplier) && !empty($purchase->category))
+							<tr>
+								<td>
+									<h2 class="table-avatar">
+										@if(!empty($purchase->image))
+										<span class="avatar avatar-sm mr-2">
+											<img class="avatar-img" src="{{asset('storage/purchases/'.$purchase->image)}}" alt="product image">
+										</span>
+										@endif
+										{{$purchase->name}}
+									</h2>
+								</td>
+								<td>{{$purchase->category->name}}</td>
+								<td>{{AppSettings::get('app_currency', '$')}}{{$purchase->price}}</td>
+								<td>{{$purchase->quantity}}</td>
+								<td>{{$purchase->supplier->name}}</td>
+								<td>{{date_format(date_create($purchase->expiry_date),"d M, Y")}}</td>
+								<!-- <td>
+>>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 											<div class="actions">
 												<a class="btn btn-sm bg-success-light" href="{{route('edit-purchase',$purchase)}}">
 													<i class="fe fe-pencil"></i> Edit
@@ -202,16 +247,16 @@
 												</a>
 											</div>
 										</td> -->
-									</tr>
-									@endif
-								@endforeach
-								
-							</tbody>
-						</table>
-					</div>
+							</tr>
+							@endif
+							@endforeach
+
+						</tbody>
+					</table>
 				</div>
 			</div>
-			<!-- /Purchases -->
+		</div>
+		<!-- /Purchases -->
 		@endisset
 	</div>
 </div>
@@ -246,11 +291,19 @@
 								</div>
 							</div>
 							<div class="form-group">
+<<<<<<< HEAD
 								<label>Pilih laporan</label>
 								<select class="form-control select" name="resource"> 
 									<option value="products">Produk</option>
 									<option value="purchases">Pembelian</option>
 									<option value="sales">Penjualan</option>
+=======
+								<label>Resource</label>
+								<select class="form-control select" name="resource">
+									<option value="products">Products</option>
+									<option value="purchases">Purchases</option>
+									<option value="sales">Sales</option>
+>>>>>>> 7ffde0c747103ab7cb392be9e1fb2af761e5fd63
 								</select>
 							</div>
 						</div>
@@ -266,9 +319,6 @@
 
 
 @push('page-js')
-	<!-- Select2 JS -->
-	<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+<!-- Select2 JS -->
+<script src="{{asset('assets/plugins/select2/js/select2.min.js')}}"></script>
 @endpush
-
-
-
