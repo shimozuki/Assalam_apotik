@@ -45,7 +45,8 @@ class ProductController extends Controller
      */
     public function expired(){
         $title = "expired Products";
-        $products = Purchase::whereDate('expiry_date', '=', Carbon::now())->get();
+        $datanow = date('Y-m-d');
+        $products = Purchase::whereDate('expiry_date', '<=', $datanow)->get();
         
         return view('expired',compact(
             'title','products'
