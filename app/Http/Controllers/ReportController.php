@@ -31,21 +31,25 @@ class ReportController extends Controller
         if ($request->resource == 'sales'){
             // DB::enableQueryLog();
             $sales = Sales::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date, $jam))->get();
+            foreach ($sales as $key => $value) {
+                $produk_id[] = $value->product_id;
+            }
+            // DB::enableQueryLog();
+            $produk = Product::join('purchases', 'purchases.id', '=', 'products.purchase_id')->whereIn('products.id', $produk_id)->get();
             // dd(DB::getQueryLog());
-            $pembelian = Purchase::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
-            foreach ($pembelian as $key => $value) {
+            foreach ($produk as $key => $value) {
                 $harga_beli = $value->price;
             }
-            $total_pembelian = $pembelian->sum('price');
+            $total_beli = $produk->sum('price');
             $total_sales = $sales->count();
             $total_cash =$sales->sum('total_price');
-            $laba_rugi = $total_cash - $total_pembelian;
-            $title = "Sales Reports";
+            $laba_rugi = $total_cash - $total_beli;
+            $title = "Sales Reports";        
             return view('reports',compact('sales','title','total_sales','total_cash', 'laba_rugi', 'harga_beli'));
         }
         if($request->resource == "products"){
             $title = "Products Reports";
-            $products = Product::whereBetween(DB::raw('DATE(created_at[0])'), array($from_date, $to_date))->get();
+            $products = Product::whereBetween(DB::raw('DATE(created_at)'), array($from_date, $to_date))->get();
             return view('reports',compact('title','products'));
         }
         if($request->resource == 'purchases'){
