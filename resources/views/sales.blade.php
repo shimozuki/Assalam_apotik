@@ -48,16 +48,12 @@
 										<td>{{date_format(date_create($sale->created_at),"d M, Y")}}</td>
 										<td>
 											<div class="actions">
-												@can('update-sales')
 												<a data-id="{{$sale->id}}" data-product="{{$sale->product_id}}" data-quantity="{{$sale->quantity}}" class="btn btn-sm bg-success-light editbtn" href="javascript:void(0);">
 													<i class="fe fe-pencil"></i> Edit
 												</a>
-												@endcan
-												@can('destroy-sales')
 												<a data-id="{{$sale->id}}" href="javascript:void(0);" class="btn btn-sm bg-danger-light deletebtn" data-toggle="modal">
 													<i class="fe fe-trash"></i> Hapus
 												</a>
-												@endcan
 											</div>
 										</td>
 									</tr>

@@ -28,10 +28,10 @@
 				</li>
 				@endcan
 				
+				@can('view-sales')
 				<li class="{{ Request::routeIs('purchases') ? 'active' : '' }}">
 				<a  href="{{route('purchases')}}"><i class="fe fe-star-o"></i> <span> Pembelian</span></a>
 				</li>
-				@can('view-sales')
 				<li><a class="{{ Request::routeIs('sales') ? 'active' : '' }}" href="{{route('sales')}}"><i class="fe fe-activity"></i> <span>Penjualan</span></a></li>
 				@endcan
 				@can('view-supplier')

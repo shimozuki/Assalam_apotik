@@ -90,11 +90,11 @@
 							</tr>
 							@endif
 							@endforeach
-							<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
+						</tbody>
+						<td colspan="4"><b>Total Penjualan : {{$total_cash}} <b>
 								<br />
 								<b>Laba Rugi : {{$laba_rugi}} <b>
 							</td>
-						</tbody>
 					</table>
 				</div>
 			</div>
