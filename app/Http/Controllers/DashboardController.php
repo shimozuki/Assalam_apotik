@@ -37,8 +37,8 @@ class DashboardController extends Controller
                 ->options([]);
         
                 
-        
-        $total_expired_products = Purchase::whereDate('expiry_date', '=', Carbon::now())->count();
+        $datanow = date('Y-m-d');
+        $total_expired_products = Purchase::whereDate('expiry_date', '<=', $datanow)->count();
         $latest_sales = Sales::whereDate('created_at','=',Carbon::now())->get();
         $today_sales = Sales::whereDate('created_at','=',Carbon::now())->sum('total_price');
         return view('dashboard',compact(
