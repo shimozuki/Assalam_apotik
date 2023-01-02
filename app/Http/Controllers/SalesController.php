@@ -125,8 +125,9 @@ class SalesController extends Controller
             /**
              * calcualting item's total price
             **/
+            $sale = Sales::find($request->id);
             $total_price = ($request->quantity) * ($sold_product->price);
-            Sales::create([
+            $sale->update([
                 'product_id'=>$request->product,
                 'quantity'=>$request->quantity,
                 'total_price'=>$total_price,
@@ -154,8 +155,8 @@ class SalesController extends Controller
                 'message'=>"Please check purchase product quantity",
                 'alert-type'=>'info',
             );
-            return back()->with($notification);
         }
+        return back()->with($notification);
     }
 
     /**
