@@ -116,6 +116,10 @@ Route::group(['middleware'=>['auth']],function (){
     Route::post('jurnal/add',[AcountingController::class,'store']);
     Route::put('jurnal/{jurnal}',[AcountingController::class,'update']);
     Route::get('jurnal/{id}',[AcountingController::class,'show'])->name('edit-jurnal');
+
+    Route::get('buku-besar', [AcountingController::class, 'bukubesar'])->name('buku-besar');
+    Route::post('buku-besar',[AcountingController::class,'get_bukubesar']);
+
 });
 
 Route::get('/', function () {

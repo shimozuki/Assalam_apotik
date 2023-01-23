@@ -54,7 +54,7 @@
 						<li><a class="{{ Request::routeIs('jurnal-umum') ? 'active' : '' }}" href="{{route('jurnal-umum')}}">Jurnal Umum</a></li>
 						@endcan
 						@can('view-bukubesar')
-						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Posting Buku Besar</a></li>
+						<li><a class="{{ Request::routeIs('buku-besar') ? 'active' : '' }}" href="{{route('buku-besar')}}">Posting Buku Besar</a></li>
 						@endcan
 						@can('view-laba-rugi')
 						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Laporan Laba Rugi</a></li>

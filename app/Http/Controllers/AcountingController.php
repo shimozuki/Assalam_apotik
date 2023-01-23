@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\Type\TrueType;
@@ -11,10 +12,10 @@ class AcountingController extends Controller
     public function index()
     {
         $data = DB::table('acountings')->orderBy('created_at', 'desc')->get();
-       
+
         return view('jurnalumum', compact('data'));
     }
-    
+
     public function create()
     {
         $date = date('Y-m-d');
@@ -43,7 +44,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 2) {
+        } elseif ($transaksi == 2) {
             $data = [
                 'name_perkiraan' => 'Sewa dibayar di muka',
                 'tanggal' => $request->tanggal,
@@ -60,7 +61,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 3) {
+        } elseif ($transaksi == 3) {
             $data = [
                 'name_perkiraan' => 'Beli Obat dan alat kesehatan',
                 'tanggal' => $request->tanggal,
@@ -77,7 +78,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 4) {
+        } elseif ($transaksi == 4) {
             $data = [
                 'name_perkiraan' => 'Peralatan Toko',
                 'tanggal' => $request->tanggal,
@@ -94,7 +95,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 5) {
+        } elseif ($transaksi == 5) {
             $data = [
                 'name_perkiraan' => 'HUTANG BANK',
                 'tanggal' => $request->tanggal,
@@ -111,7 +112,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 6) {
+        } elseif ($transaksi == 6) {
             $data = [
                 'name_perkiraan' => 'GAJI PEGAWAI',
                 'tanggal' => $request->tanggal,
@@ -128,7 +129,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 7) {
+        } elseif ($transaksi == 7) {
             $data = [
                 'name_perkiraan' => 'REKENING AIR',
                 'tanggal' => $request->tanggal,
@@ -145,7 +146,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 8) {
+        } elseif ($transaksi == 8) {
             $data = [
                 'name_perkiraan' => 'Biaya Listrik & Telepon',
                 'tanggal' => $request->tanggal,
@@ -162,7 +163,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 9) {
+        } elseif ($transaksi == 9) {
             $data = [
                 'name_perkiraan' => 'Biaya lain-lain',
                 'tanggal' => $request->tanggal,
@@ -179,7 +180,7 @@ class AcountingController extends Controller
                 'keterangan' => $request->keterangan,
             ];
             $insert = DB::table('acountings')->insert($kas);
-        }elseif ($transaksi == 10) {
+        } elseif ($transaksi == 10) {
             $data = [
                 'name_perkiraan' => 'Prive Owner',
                 'tanggal' => $request->tanggal,
@@ -199,16 +200,16 @@ class AcountingController extends Controller
         }
         try {
             if ($insert == true) {
-                $notification=array(
-                    'message'=>"Jurnal Umum has been added",
-                    'alert-type'=>'success',
+                $notification = array(
+                    'message' => "Jurnal Umum has been added",
+                    'alert-type' => 'success',
                 );
                 return redirect()->route('products')->with($notification);
             }
         } catch (\Throwable $th) {
-            $notification=array(
-                'message'=>"Jurnal Umum  filed to added",
-                'alert-type'=>'danger',
+            $notification = array(
+                'message' => "Jurnal Umum  filed to added",
+                'alert-type' => 'danger',
             );
             return redirect()->route('products')->with($notification);
         }
@@ -217,8 +218,9 @@ class AcountingController extends Controller
     {
         $title = "edit Jurnal";
         $jurnal = DB::table('acountings')->find($id);
-        return view('edit-jurnal',compact(
-            'title','jurnal'
+        return view('edit-jurnal', compact(
+            'title',
+            'jurnal'
         ));
     }
 
@@ -235,18 +237,47 @@ class AcountingController extends Controller
 
         try {
             if ($update == true) {
-                $notification=array(
-                    'message'=>"Jurnal Umum has been Updated",
-                    'alert-type'=>'success',
+                $notification = array(
+                    'message' => "Jurnal Umum has been Updated",
+                    'alert-type' => 'success',
                 );
                 return redirect()->route('jurnal-umum')->with($notification);
             }
         } catch (\Throwable $th) {
-            $notification=array(
-                'message'=>"Jurnal Umum filed to update",
-                'alert-type'=>'danger',
+            $notification = array(
+                'message' => "Jurnal Umum filed to update",
+                'alert-type' => 'danger',
             );
             return redirect()->route('jurnal-umum')->with($notification);
+        }
+    }
+
+    public function bukubesar(Request $request)
+    {
+        $nama_akun = $request->name;
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $get_akun = DB::table('acountings')->select('name_perkiraan')->get();
+        // DB::enableQueryLog();
+        $query = DB::table('acountings')->select('*')->where('name_perkiraan', $nama_akun)->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        // dd(DB::getQueryLog());
+        return view('bukubesar', compact('query', 'get_akun'));
+    }
+
+    public function get_bukubesar(Request $request)
+    {
+        if ($request->resource == 'products') {
+            $nama_akun = $request->name;
+            $from_date = $request->from_date;
+            $to_date = $request->to_date;
+            $get_akun = DB::table('acountings')->select('name_perkiraan')->get();
+            // DB::enableQueryLog();
+            $query = DB::table('acountings')->select('*')->where('name_perkiraan', $nama_akun)->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+            // dd(DB::getQueryLog());
+            return view('bukubesar', compact('query', 'get_akun'));
+            // echo "<pre>";
+            // print_r($query);
+            // echo "</pre>";
         }
     }
 }
