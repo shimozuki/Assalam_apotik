@@ -18,6 +18,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\AcountingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -109,6 +110,12 @@ Route::group(['middleware'=>['auth']],function (){
 
     Route::get('backup',[BackupController::class,'index'])->name('backup-app');
     Route::get('backup-app',[BackupController::class,'database'])->name('backup-db');
+
+    Route::get('jurnal-umum', [AcountingController::class,'index'])->name('jurnal-umum');
+    Route::get('jurnal/add',[AcountingController::class,'create'])->name('add-jurnal');
+    Route::post('jurnal/add',[AcountingController::class,'store']);
+    Route::put('jurnal/{jurnal}',[AcountingController::class,'update']);
+    Route::get('jurnal/{id}',[AcountingController::class,'show'])->name('edit-jurnal');
 });
 
 Route::get('/', function () {

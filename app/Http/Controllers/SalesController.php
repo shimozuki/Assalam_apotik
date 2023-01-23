@@ -9,6 +9,7 @@ use App\Models\Purchase;
 use Illuminate\Http\Request;
 use App\Events\PurchaseOutStock;
 use App\Notifications\StockAlert;
+use Illuminate\Support\Facades\DB;
 
 class SalesController extends Controller
 {
@@ -59,16 +60,26 @@ class SalesController extends Controller
              * calcualting item's total price
             **/
             $total_price = ($request->quantity) * ($sold_product->price);
-            Sales::create([
-                'product_id'=>$request->product,
-                'quantity'=>$request->quantity,
-                'total_price'=>$total_price,
-            ]);
-
-            $notification = array(
-                'message'=>"Product has been sold",
-                'alert-type'=>'success',
-            );
+            DB::beginTransaction();
+            try {
+                Sales::create([
+                    'product_id'=>$request->product,
+                    'quantity'=>$request->quantity,
+                    'total_price'=>$total_price,
+                ]);
+                DB::table('acountings')->insert([
+                    'name_perkiraan' => 'Pendapatan',
+                    'debet' => 0,
+                    'kredit' => $total_price,
+                    
+                ]);
+                $notification = array(
+                    'message'=>"Product has been sold",
+                    'alert-type'=>'success',
+                );
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
         } 
         if($new_quantity <=1 && $new_quantity !=0){
             // send notification 

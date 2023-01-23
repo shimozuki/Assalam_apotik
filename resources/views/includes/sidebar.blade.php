@@ -46,7 +46,25 @@
 					<a href="{{route('reports')}}"><i class="fe fe-document"></i> <span> laporan</span></a>
 				</li>
 				@endcan
-
+				@can('view-acounting')
+				<li class="submenu">
+					<a href="#"><i class="fe fe-book"></i> <span> Acounting</span> <span class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						@can('view-jurnalumum')
+						<li><a class="{{ Request::routeIs('jurnal-umum') ? 'active' : '' }}" href="{{route('jurnal-umum')}}">Jurnal Umum</a></li>
+						@endcan
+						@can('view-bukubesar')
+						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Posting Buku Besar</a></li>
+						@endcan
+						@can('view-laba-rugi')
+						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Laporan Laba Rugi</a></li>
+						@endcan
+						@can('view-neraca')
+						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Neraca</a></li>
+						@endcan
+					</ul>
+				</li>					
+				@endcan
 				@can('view-access-control')
 				<li class="submenu">
 					<a href="#"><i class="fe fe-lock"></i> <span> Hak Akses</span> <span class="menu-arrow"></span></a>

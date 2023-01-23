@@ -32,7 +32,7 @@
             	<div class="container">
                 	<div class="loginbox">
                     	<div class="login-left">
-							<img class="img-fluid" src="@if(!empty(AppSettings::get('logo'))) {{asset('storage/'.AppSettings::get('logo'))}} @else{{asset('assets/img/logo.png')}} @endif" alt="Logo">
+							<img class="img-fluid" src="@if(!empty(AppSettings::get('logo'))) {{asset('app/public/'.AppSettings::get('logo'))}} @else{{asset('assets/img/logo.png')}} @endif" alt="Logo">
                         </div>
                         <div class="login-right">
 							<div class="login-right-wrap">

@@ -8,7 +8,7 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" type="image/x-icon" href="@if(!empty(AppSettings::get('logo'))) {{asset('storage/'.AppSettings::get('favicon'))}} @else{{asset('assets/img/favicon.png')}} @endif">
+		<link rel="shortcut icon" type="image/x-icon" href="@if(!empty(AppSettings::get('logo'))) {{asset('public/'.AppSettings::get('favicon'))}} @else{{asset('assets/img/favicon.png')}} @endif">
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -107,7 +107,6 @@
 	<script src="{{asset('assets/js/script.js')}}"></script>
 	<script src="{{asset('js/app.js')}}"></script>
 	<script src="{{asset('assets/js/datatables-customizer.js')}}"></script>
-
 	<script>
 		$(document).ready(function() {
 			$('.select2').select2({
