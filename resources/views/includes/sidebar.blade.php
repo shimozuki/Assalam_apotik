@@ -57,7 +57,7 @@
 						<li><a class="{{ Request::routeIs('buku-besar') ? 'active' : '' }}" href="{{route('buku-besar')}}">Posting Buku Besar</a></li>
 						@endcan
 						@can('view-laba-rugi')
-						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Laporan Laba Rugi</a></li>
+						<li><a class="{{ Request::routeIs('laba-rugi') ? 'active' : '' }}" href="{{route('laba-rugi')}}">Laporan Laba Rugi</a></li>
 						@endcan
 						@can('view-neraca')
 						<li><a class="{{ Request::routeIs('permissions') ? 'active' : '' }}" href="{{route('permissions')}}">Neraca</a></li>

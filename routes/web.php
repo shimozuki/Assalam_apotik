@@ -120,6 +120,9 @@ Route::group(['middleware'=>['auth']],function (){
     Route::get('buku-besar', [AcountingController::class, 'bukubesar'])->name('buku-besar');
     Route::post('buku-besar',[AcountingController::class,'get_bukubesar']);
 
+    Route::get('laba-rugi', [AcountingController::class, 'laba_rugi'])->name('laba-rugi');
+    Route::post('laba-rugi',[AcountingController::class,'get_labarugi']);
+
 });
 
 Route::get('/', function () {

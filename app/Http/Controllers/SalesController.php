@@ -60,8 +60,6 @@ class SalesController extends Controller
              * calcualting item's total price
             **/
             $total_price = ($request->quantity) * ($sold_product->price);
-            DB::beginTransaction();
-            try {
                 Sales::create([
                     'product_id'=>$request->product,
                     'quantity'=>$request->quantity,
@@ -77,9 +75,6 @@ class SalesController extends Controller
                     'message'=>"Product has been sold",
                     'alert-type'=>'success',
                 );
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
         } 
         if($new_quantity <=1 && $new_quantity !=0){
             // send notification 

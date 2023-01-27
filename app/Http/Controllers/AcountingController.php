@@ -280,4 +280,69 @@ class AcountingController extends Controller
             // echo "</pre>";
         }
     }
+
+
+    public function laba_rugi(Request $request)
+    {
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $product = $request->product;
+        // DB::enableQueryLog();
+        $query = DB::table('acountings')->select('tanggal',DB::raw('SUM(debet) AS persedian_awal'))
+                ->where('name_perkiraan', 'Beli Obat dan alat kesehatan')
+                ->orWhere('name_perkiraan', 'Beban Persediaan')
+        // dd(DB::getQueryLog());
+                ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        $get_gaji = DB::table('acountings')->select(DB::raw('SUM(debet) AS gaji'))
+                    ->where('name_perkiraan', 'Gaji Pegawai')->first();
+                    // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $get_biyaya = DB::table('acountings')->select(DB::raw('SUM(debet) AS biyaya'))
+                      ->where('name_perkiraan', 'Biaya lain-lain')
+        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+// dd(DB::getQueryLog());
+        // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $get_pb = DB::table('sales')
+                  ->join('products', 'sales.product_id', '=', 'products.id')
+                  ->join('purchases', 'products.purchase_id', '=', 'purchases.id')
+                  ->select(DB::raw('SUM(sales.total_price) AS total_penjualan'), DB::raw('SUM(purchases.price) AS total_pembelian'))
+                  ->whereBetween(DB::raw('DATE(sales.created_at)'), [$from_date, $to_date])->first();
+        return view('labarugi', compact('query', 'get_pb', 'get_biyaya', 'get_gaji', 'product'));
+
+        // echo "<pre>";
+        // print_r($get_biyaya);
+        // print_r($product);
+        // echo "</pre>";
+    }
+    public function get_labarugi(Request $request)
+    {
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $product = $request->product;
+        // DB::enableQueryLog();
+        $query = DB::table('acountings')->select('tanggal',DB::raw('SUM(debet) AS persedian_awal'))
+                ->where('name_perkiraan', 'Beli Obat dan alat kesehatan')
+                ->orWhere('name_perkiraan', 'Beban Persediaan')
+        // dd(DB::getQueryLog());
+                ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        $get_gaji = DB::table('acountings')->select(DB::raw('SUM(debet) AS gaji'))
+                    ->where('name_perkiraan', 'Gaji Pegawai')->first();
+                    // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $get_biyaya = DB::table('acountings')->select(DB::raw('SUM(debet) AS biyaya'))
+                      ->where('name_perkiraan', 'Biaya lain-lain')
+        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+// dd(DB::getQueryLog());
+        // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        // DB::enableQueryLog();
+        $get_pb = DB::table('sales')
+                  ->join('products', 'sales.product_id', '=', 'products.id')
+                  ->join('purchases', 'products.purchase_id', '=', 'purchases.id')
+                  ->select(DB::raw('SUM(sales.total_price) AS total_penjualan'), DB::raw('SUM(purchases.price) AS total_pembelian'))
+                  ->whereBetween(DB::raw('DATE(purchases.created_at)'), [$from_date, $to_date])->first();
+                //   dd(DB::getQueryLog());
+        return view('labarugi', compact('query', 'get_pb', 'get_biyaya', 'get_gaji', 'product'));
+        // // echo "<pre>";
+        // print_r($get_pb);
+        // echo "</pre>";
+    }
+
 }
