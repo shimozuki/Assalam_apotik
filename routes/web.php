@@ -124,6 +124,7 @@ Route::group(['middleware'=>['auth']],function (){
     Route::post('laba-rugi',[AcountingController::class,'get_labarugi']);
 
     Route::get('neraca', [AcountingController::class, 'neraca'])->name('neraca');
+    Route::post('neraca', [AcountingController::class, 'get_neraca']);
 
 });
 

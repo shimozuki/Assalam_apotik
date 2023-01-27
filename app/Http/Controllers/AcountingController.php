@@ -272,7 +272,7 @@ class AcountingController extends Controller
             $to_date = $request->to_date;
             $get_akun = DB::table('acountings')->select('name_perkiraan')->get();
             // DB::enableQueryLog();
-            $query = DB::table('acountings')->select('*')->where('name_perkiraan', $nama_akun)->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+            $query = DB::table('acountings')->select('*')->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
             // dd(DB::getQueryLog());
             return view('bukubesar', compact('query', 'get_akun'));
             // echo "<pre>";
@@ -345,9 +345,62 @@ class AcountingController extends Controller
         // echo "</pre>";
     }
 
-    public function neraca()
+    public function neraca(Request $request)
     {
-        return view('neraca');
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $product = $request->product;
+        $actival = ['Biaya lain-lain', 'Gaji Pegawai', 'Hutang Dagang', 'Pendapatan', 'HUTANG BANK'];
+        $aktiva_lancar = DB::table('acountings')->select('debet', 'name_perkiraan')
+                        ->whereNotIn('name_perkiraan', $actival)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $aktiva_lancars = DB::table('acountings')->select(DB::raw('SUM(debet) AS saldo'))
+                        ->whereNotIn('name_perkiraan', $actival)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        $activat = ['Beli Obat dan alat kesehatan', 'Kas', 'Sewa dibayar di muka', 'Biaya lain-lain', 'Hutang Dagang', 'HUTANG BANK'];
+        $activa_tetap = DB::table('acountings')->select('debet', 'kredit', 'name_perkiraan')
+                        ->whereNotIn('name_perkiraan', $activat)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $activa_tetaps = DB::table('acountings')->select(DB::raw('SUM(debet) AS saldot'))
+                        ->whereNotIn('name_perkiraan', $activat)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        $modal = DB::table('acountings')->select('debet', 'kredit', 'name_perkiraan')
+                    ->where('name_perkiraan', 'Prive Owner')
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+                    $query = DB::table('acountings')->select('tanggal',DB::raw('SUM(debet) AS persedian_awal'))
+                    ->where('name_perkiraan', 'Beli Obat dan alat kesehatan')
+                    ->orWhere('name_perkiraan', 'Beban Persediaan')
+            // dd(DB::getQueryLog());
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+            $get_gaji = DB::table('acountings')->select(DB::raw('SUM(debet) AS gaji'))
+                        ->where('name_perkiraan', 'Gaji Pegawai')->first();
+                        // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+            $get_biyaya = DB::table('acountings')->select(DB::raw('SUM(debet) AS biyaya'))
+                          ->where('name_perkiraan', 'Biaya lain-lain')
+            ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+    // dd(DB::getQueryLog());
+            // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+            // DB::enableQueryLog();
+            $get_pb = DB::table('sales')
+                      ->join('products', 'sales.product_id', '=', 'products.id')
+                      ->join('purchases', 'products.purchase_id', '=', 'purchases.id')
+                      ->select(DB::raw('SUM(sales.total_price) AS total_penjualan'), DB::raw('SUM(purchases.price) AS total_pembelian'), DB::raw('MONTH(purchases.created_at) AS month'))
+                      ->whereBetween(DB::raw('DATE(purchases.created_at)'), [$from_date, $to_date])->first();
+                    //   dd(DB::getQueryLog());
+                    // ->whereBetween(DB::raw('DATE(created_at)'), [$from_date, $to_date])->first();
+
+        $pasiva_t = ['Biaya lain-lain', 'Gaji Pegawai', 'Pendapatan', 'Beli Obat dan alat kesehatan', 'Kas', 'Sewa dibayar di muka', 'Biaya lain-lain'];
+        $pasiva = DB::table('acountings')->select('kredit', 'debet', 'name_perkiraan')
+                    ->whereNotIn('name_perkiraan', $pasiva_t)
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $pasivas = DB::table('acountings')->select(DB::raw('SUM(kredit + debet) AS saldo'))
+                    ->whereNotIn('name_perkiraan', $pasiva_t)
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        
+        // echo "<pre>";
+        // print_r($pasiva);
+        // echo "</pre>";
+        return view('neraca', compact('aktiva_lancar', 'aktiva_lancars', 'activa_tetap', 'activa_tetaps', 'modal', 'pasivas', 'pasiva', 'query', 'get_pb', 'get_biyaya', 'get_gaji', 'product'));
     }
 
     public function get_neraca(Request $request)
@@ -355,8 +408,57 @@ class AcountingController extends Controller
         $from_date = $request->from_date;
         $to_date = $request->to_date;
         $product = $request->product;
+        $actival = ['Biaya lain-lain', 'Gaji Pegawai', 'Hutang Dagang', 'Pendapatan', 'HUTANG BANK'];
+        $aktiva_lancar = DB::table('acountings')->select('debet', 'name_perkiraan')
+                        ->whereNotIn('name_perkiraan', $actival)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $aktiva_lancars = DB::table('acountings')->select(DB::raw('SUM(debet) AS saldo'))
+                        ->whereNotIn('name_perkiraan', $actival)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        $activat = ['Beli Obat dan alat kesehatan', 'Kas', 'Sewa dibayar di muka', 'Biaya lain-lain', 'Hutang Dagang', 'HUTANG BANK'];
+        $activa_tetap = DB::table('acountings')->select('debet', 'kredit', 'name_perkiraan')
+                        ->whereNotIn('name_perkiraan', $activat)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $activa_tetaps = DB::table('acountings')->select(DB::raw('SUM(debet) AS saldot'))
+                        ->whereNotIn('name_perkiraan', $activat)
+                        ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+        $modal = DB::table('acountings')->select('debet', 'kredit', 'name_perkiraan')
+                    ->where('name_perkiraan', 'Prive Owner')
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+                    $query = DB::table('acountings')->select('tanggal',DB::raw('SUM(debet) AS persedian_awal'))
+                    ->where('name_perkiraan', 'Beli Obat dan alat kesehatan')
+                    ->orWhere('name_perkiraan', 'Beban Persediaan')
+            // dd(DB::getQueryLog());
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+            $get_gaji = DB::table('acountings')->select(DB::raw('SUM(debet) AS gaji'))
+                        ->where('name_perkiraan', 'Gaji Pegawai')->first();
+                        // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+            $get_biyaya = DB::table('acountings')->select(DB::raw('SUM(debet) AS biyaya'))
+                          ->where('name_perkiraan', 'Biaya lain-lain')
+            ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
+    // dd(DB::getQueryLog());
+            // ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+            // DB::enableQueryLog();
+            $get_pb = DB::table('sales')
+                      ->join('products', 'sales.product_id', '=', 'products.id')
+                      ->join('purchases', 'products.purchase_id', '=', 'purchases.id')
+                      ->select(DB::raw('SUM(sales.total_price) AS total_penjualan'), DB::raw('SUM(purchases.price) AS total_pembelian'), DB::raw('MONTH(purchases.created_at) AS month'))
+                      ->whereBetween(DB::raw('DATE(purchases.created_at)'), [$from_date, $to_date])->first();
+                    //   dd(DB::getQueryLog());
+                    // ->whereBetween(DB::raw('DATE(created_at)'), [$from_date, $to_date])->first();
 
+        $pasiva_t = ['Biaya lain-lain', 'Gaji Pegawai', 'Pendapatan', 'Beli Obat dan alat kesehatan', 'Kas', 'Sewa dibayar di muka', 'Biaya lain-lain'];
+        $pasiva = DB::table('acountings')->select('kredit', 'debet', 'name_perkiraan')
+                    ->whereNotIn('name_perkiraan', $pasiva_t)
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->get();
+        $pasivas = DB::table('acountings')->select(DB::raw('SUM(kredit + debet) AS saldo'))
+                    ->whereNotIn('name_perkiraan', $pasiva_t)
+                    ->whereBetween(DB::raw('DATE(tanggal)'), [$from_date, $to_date])->first();
         
+        // echo "<pre>";
+        // print_r($pasiva);
+        // echo "</pre>";
+        return view('neraca', compact('aktiva_lancar', 'aktiva_lancars', 'activa_tetap', 'activa_tetaps', 'modal', 'pasivas', 'pasiva', 'query', 'get_pb', 'get_biyaya', 'get_gaji', 'product'));
     }
 
 }

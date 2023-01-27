@@ -34,6 +34,7 @@
 									<label>Nama Akun<span class="text-danger">*</span></label>
 									<select class="select2 form-select form-control" id="qty" name="name"> 
 										<option value="1">PIUTANG PEGAWAI</option>
+										<option value="1">PIUTANG PEGAWAI</option>
 										<option value="2">SEWA Dibayar Di muka</option>
 										<option value="3">Pembelian Obat & alat kesehatan</option>
 										<option value="4">Peralatan Toko</option>

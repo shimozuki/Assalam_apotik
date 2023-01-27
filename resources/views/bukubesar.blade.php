@@ -109,14 +109,14 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label>Nama Akun</label>
 								<select class="select2 form-select form-control" name="name">
 									@foreach ($get_akun as $row)
 									<option value="{{$row->name_perkiraan}}">{{$row->name_perkiraan}}</option>
 									@endforeach
 								</select>
-							</div>
+							</div> -->
 							<input type="hidden" name="resource" value="products">
 						</div>
 					</div>
