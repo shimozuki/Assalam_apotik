@@ -345,4 +345,18 @@ class AcountingController extends Controller
         // echo "</pre>";
     }
 
+    public function neraca()
+    {
+        return view('neraca');
+    }
+
+    public function get_neraca(Request $request)
+    {
+        $from_date = $request->from_date;
+        $to_date = $request->to_date;
+        $product = $request->product;
+
+        
+    }
+
 }

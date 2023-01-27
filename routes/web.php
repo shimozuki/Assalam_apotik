@@ -123,6 +123,8 @@ Route::group(['middleware'=>['auth']],function (){
     Route::get('laba-rugi', [AcountingController::class, 'laba_rugi'])->name('laba-rugi');
     Route::post('laba-rugi',[AcountingController::class,'get_labarugi']);
 
+    Route::get('neraca', [AcountingController::class, 'neraca'])->name('neraca');
+
 });
 
 Route::get('/', function () {
