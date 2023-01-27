@@ -336,7 +336,7 @@ class AcountingController extends Controller
         $get_pb = DB::table('sales')
                   ->join('products', 'sales.product_id', '=', 'products.id')
                   ->join('purchases', 'products.purchase_id', '=', 'purchases.id')
-                  ->select(DB::raw('SUM(sales.total_price) AS total_penjualan'), DB::raw('SUM(purchases.price) AS total_pembelian'))
+                  ->select(DB::raw('SUM(sales.total_price) AS total_penjualan'), DB::raw('SUM(purchases.price) AS total_pembelian'), DB::raw('MONTH(purchases.created_at) AS month'))
                   ->whereBetween(DB::raw('DATE(purchases.created_at)'), [$from_date, $to_date])->first();
                 //   dd(DB::getQueryLog());
         return view('labarugi', compact('query', 'get_pb', 'get_biyaya', 'get_gaji', 'product'));

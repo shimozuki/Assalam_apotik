@@ -29,7 +29,7 @@
 				<div class="table-responsive">
 					<table id="datatable-export" class="table table-hover table-center mb-0">
 						<thead>
-							<th class="center">Tanggal</th>
+							<th class="center">Bulan</th>
 							<th class="center">Pendapatan</th>
 							<th class="center">Persedian Awal</th>
 							<th class="center">Persedian Akhir</th>
@@ -44,9 +44,57 @@
 							$pokok = ($query->persedian_awal + $get_pb->total_pembelian) - $akhir;
 							$total = ($get_gaji->gaji + $get_biyaya->biyaya);
 							$bersoh = $get_pb->total_penjualan - ($pokok + $total);
+							if ($get_pb->month == '01')
+							{
+								$bulan = "Januari";
+							}
+							elseif ($get_pb->month == '02')
+							{
+								$bulan = "February";
+							}
+							elseif ($get_pb->month == '03')
+							{
+								$bulan = "Maret";
+							}
+							elseif ($get_pb->month == '04')
+							{
+								$bulan = "April";
+							}
+							elseif ($get_pb->month == '05')
+							{
+								$bulan = "Mei";
+							}
+							elseif ($get_pb->month == '06')
+							{
+								$bulan = "Juni";
+							}
+							elseif ($get_pb->month == '07')
+							{
+								$bulan = "Juli";
+							}
+							elseif ($get_pb->month == '08')
+							{
+								$bulan = "Agustus";
+							}
+							elseif ($get_pb->month == '09')
+							{
+								$bulan = "September";
+							}
+							elseif ($get_pb->month == '10')
+							{
+								$bulan = "Oktober";
+							}
+							elseif ($get_pb->month == '11')
+							{
+								$bulan = "November";
+							}
+							elseif ($get_pb->month == '12')
+							{
+								$bulan = "Desember";
+							}
 							@endphp
 							<tr>
-								<td>{{$query->tanggal}}</td>
+								<td>{{$bulan}}</td>
 								<td>{{$get_pb->total_penjualan}}
 								</td>
 								<td>
