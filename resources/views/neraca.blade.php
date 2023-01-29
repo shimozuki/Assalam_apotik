@@ -39,9 +39,9 @@
 							<td>{{$value->name_perkiraan}}</td>
 							<td>RP. {{$value->debet}}</td>
 						</tbody>
-						<td colspan="2"><b>Total Activa Lancar :</b> Rp.{{$aktiva_lancars->saldo}}</td>
 						@endif
 						@endforeach
+						<td colspan="2"><b>Total Activa Lancar :</b> Rp.{{$aktiva_lancars->saldo}}</td>
 					</table>
 				</div>
 			</div>
@@ -59,15 +59,21 @@
 							<th class="center">Nama Perkiraan</th>
 							<th class="center">Kas</th>
 						</thead>
+						@php 
+						$total_activa = $aktiva_lancars->saldo + $activa_tetaps->saldot;
+						@endphp
 						@foreach($activa_tetap as $value)
 						@if (!empty($value->name_perkiraan))
 						<tbody>
 							<td>{{$value->name_perkiraan}}</td>
 							<td>RP. {{$value->debet}}</td>
 						</tbody>
-						<td colspan="2"><b>Total Activa Tetap :</b> Rp.{{$activa_tetaps->saldot}}</td>
 						@endif
 						@endforeach
+						<td colspan="2"><b>Total Activa Tetap :</b> Rp.{{$activa_tetaps->saldot}}
+						<br />
+						<b>Total Activa :</b> Rp.{{$total_activa}}
+					</td>
 					</table>
 				</div>
 			</div>
@@ -94,9 +100,9 @@
 							<td>{{$value->name_perkiraan}}</td>
 							<td>RP. {{$total}}</td>
 						</tbody>
-						<td colspan="2"><b>Total Activa Lancar :</b> Rp.{{$pasivas->saldo}}</td>
 						@endif
 						@endforeach
+						<td colspan="2"><b>Total Activa Lancar :</b> Rp.{{$pasivas->saldo}}</td>
 					</table>
 				</div>
 			</div>
@@ -124,15 +130,21 @@
 						$bersoh = $get_pb->total_penjualan - ($pokok + $total);
 						$totaldk = $value->kredit + $value->debet;
 						$totalbersih = $bersoh + $totaldk;
+						$total_pasiva = $pasivas->saldo + $bersoh;
 						@endphp
 						<tbody>
 							<td>{{$value->name_perkiraan}}</td>
 							<td>Rp. {{$totaldk}}</td>
 							<td>Rp. {{$bersoh}}</td>
 						</tbody>
-						<td colspan="3"><b>Total Bersih :</b> Rp.{{$totalbersih}}</td>
 						@endif
 						@endforeach
+						<td colspan="3">
+							<b>Total Bersih :</b> Rp.{{$totalbersih}}
+							<br>
+							<b>Total Pasiva :</b>Rp. {{$total_pasiva}}
+						
+						</td>
 					</table>
 					</table>
 				</div>
