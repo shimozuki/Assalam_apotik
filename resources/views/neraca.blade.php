@@ -129,8 +129,8 @@
 						$total = ($get_gaji->gaji + $get_biyaya->biyaya);
 						$bersoh = $get_pb->total_penjualan - ($pokok + $total);
 						$totaldk = $value->kredit + $value->debet;
-						$totalbersih = $bersoh + $totaldk;
-						$total_pasiva = $pasivas->saldo + $bersoh;
+						$total_bersih = $bersoh + $totaldk;
+						$total_pasiva = $pasivas->saldo + $total_bersih;
 						@endphp
 						<tbody>
 							<td>{{$value->name_perkiraan}}</td>
@@ -138,13 +138,12 @@
 							<td>Rp. {{$bersoh}}</td>
 						</tbody>
 						@endif
-						@endforeach
 						<td colspan="3">
-							<b>Total Bersih :</b> Rp.{{$totalbersih}}
+							<b>Total Bersih :</b> Rp.{{$total_bersih}}
 							<br>
 							<b>Total Pasiva :</b>Rp. {{$total_pasiva}}
-						
 						</td>
+						@endforeach
 					</table>
 					</table>
 				</div>
