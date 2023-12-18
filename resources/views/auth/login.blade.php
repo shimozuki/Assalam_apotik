@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Login</h1>
-<p class="account-subtitle">Apotek Rangga Solo Parma</p>
+<p class="account-subtitle">Apotek Ranggasolo Farma</p>
 @if (session('login_error'))
 <x-alerts.danger :error="session('login_error')" />
 @endif
