@@ -1668,7 +1668,7 @@ html.menu-opened body {
 -----------------------*/
 
 .sidebar {
-    background-color: #1b5a90;
+    background-color: #1b905f;
    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
     bottom: 0;
     left: 0;
@@ -1707,18 +1707,18 @@ html.menu-opened body {
 	padding: 0 20px;
 }
 .sidebar-menu li a:hover {
-    color: #5ae8ff;
+    color: #5affaa;
 }
 .sidebar-menu > ul > li > a:hover {
-	background-color: #19c1dc;
+	background-color: #19dc81;
     color: #fff;
 }
 .sidebar-menu > ul > li.active > a:hover {
-    background-color: #19c1dc;
+    background-color: #19dc8e;
     color: #fff;
 }
 .sidebar-menu li.active a {
-    background-color: #00d0f1;
+    background-color: #00f178;
     color: #fff;
 }
 .menu-title {
@@ -1748,7 +1748,7 @@ html.menu-opened body {
     padding: 10px 15px;
 }
 .sidebar-menu ul ul a.active {
-	color: #20e3ff;
+	color: #20ff97;
 	text-decoration: underline;
 }
 .mobile_btn {
@@ -2029,7 +2029,7 @@ html.menu-opened body {
 }
 .login-wrapper .loginbox .login-left {
     align-items: center;
-    background: linear-gradient(180deg, #1b5a90, #00d0f1);
+    background: linear-gradient(180deg, #1b9034, #00f181);
     border-radius: 6px 0 0 6px;
     flex-direction: column;
     justify-content: center;

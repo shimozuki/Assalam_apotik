@@ -2,7 +2,7 @@
 
 @section('content')
 <h1>Login</h1>
-<p class="account-subtitle">Apotek Family Lunyuk</p>
+<p class="account-subtitle">Apotek Rangga Solo Parma</p>
 @if (session('login_error'))
 <x-alerts.danger :error="session('login_error')" />
 @endif
@@ -16,7 +16,7 @@
 		<input class="form-control" name="password" type="password" placeholder="Password">
 	</div>
 	<div class="form-group">
-		<button class="btn btn-primary btn-block" type="submit">Login</button>
+		<button class="btn btn-success btn-block" type="submit">Login</button>
 	</div>
 </form>
 <!-- /Form -->
